@@ -1,4 +1,4 @@
-package exceptions;
+package aspects;
 
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
@@ -8,6 +8,7 @@ import java.util.regex.PatternSyntaxException;
 import javax.swing.JOptionPane;
 
 import connection.ConexaoComercio;
+import presentation.IFCliente;
 
 public aspect Exceptions {
 
@@ -22,7 +23,7 @@ public aspect Exceptions {
 
 	public pointcut NFEExceptions(): execution(* *.*(..)throws NumberFormatException);
 
-	public pointcut PEExceptions(): execution(* *.*(..)throws ParseException);
+	public pointcut PEExceptions(): execution(public * IFCliente.*(..)throws ParseException);
 
 	public pointcut PSEExceptions(): execution(* *.*(..)throws PatternSyntaxException);
 
@@ -53,7 +54,7 @@ public aspect Exceptions {
 	}
 
 	after() throwing (ParseException ex): PEExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Início da string especificada não pode ser analisado.",
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "Início da string não pode ser analisado.",
 				0);
 
 	}
@@ -79,7 +80,7 @@ public aspect Exceptions {
 	}
 
 	after() throwing (NullPointerException ex): NPExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Elemento especificado nulo", 0);
+		JOptionPane.showMessageDialog(null, thisJoinPoint.getSignature(), "Elemento especificado nulo", 0);
 
 	}
 
@@ -110,9 +111,9 @@ public aspect Exceptions {
 
 	// Constructors exceptions
 
-	public pointcut CNFException(): execution( public ConexaoComercio.new(..) throws ClassNotFoundException);
+	public pointcut CNFException(): initialization( public ConexaoComercio.new(..) throws ClassNotFoundException);
 
-	public pointcut SQLExceptionExeption(): execution( public ConexaoComercio.new(..) throws SQLException);
+	public pointcut SQLExceptionExeption(): initialization( public ConexaoComercio.new(..) throws SQLException);
 
 	// Constructors advises
 	after() throwing (SQLException sql): SQLExceptionExeption(){

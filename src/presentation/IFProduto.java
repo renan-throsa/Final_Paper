@@ -27,7 +27,7 @@ public class IFProduto extends IFCadastro {
 		tfPreco = new JFormattedTextField(new Double(0));
 		coCategoria = new JComboBox<Categoria>();
 
-		pnRotulos.add(new JLabel(" Pre�o: "));
+		pnRotulos.add(new JLabel(" Preço: "));
 		pnRotulos.add(new JLabel(" Categoria: "));
 		pnCampos.add(tfPreco);
 		pnCampos.add(coCategoria);

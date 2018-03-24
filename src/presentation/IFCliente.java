@@ -1,17 +1,10 @@
-
 package presentation;
-
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.text.MaskFormatter;
-
 import persistence.ClienteDAO;
 import transference.Cliente;
 

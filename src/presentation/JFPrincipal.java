@@ -52,6 +52,7 @@ private DesktopImagem desktop;
     miProduto.setMnemonic('P');
     miCliente.setMnemonic('C');
     miRegistrar.setMnemonic('R');
+    this.miVer.setMnemonic('V');
     miSobre.setMnemonic('o');
     
     setJMenuBar(mbBarra);
@@ -62,7 +63,9 @@ private DesktopImagem desktop;
     meCadastro.add(miProduto);
     meCadastro.add(miCliente);
     mePedido.add(miRegistrar);
+    mePedido.add(this.miVer);
     meSistema.add(miSobre);
+    
     
     desktop = new DesktopImagem(
       getClass().getResource("abstract1.jpg").getPath());

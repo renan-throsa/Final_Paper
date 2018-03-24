@@ -14,13 +14,3 @@ public class Principal {
     new JFPrincipal().setVisible(true);
   }
 }
-
-/********************************************************************
- * Este arquivo é parte integrante do livro identificado abaixo e é *
- * protegido pela legislação que trata dos direitos autorais.       *
- *                                                                  *
- * Título:  Programação de Computadores em Java                     *
- * Autor:   Rui Rossi dos Santos                                    *
- * Editora: NovaTerra Editora e Distribuidora Ltda.                 *
- * Ano:     2014                                                    *
- ********************************************************************/
