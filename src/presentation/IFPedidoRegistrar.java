@@ -40,9 +40,7 @@ import transference.Pedido;
 import transference.Produto;
 
 public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, DocumentListener, ActionListener {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	protected JComboBox<Cliente> coCliente;
 	protected JComboBox<Produto> coProduto;

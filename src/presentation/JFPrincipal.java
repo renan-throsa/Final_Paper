@@ -15,21 +15,20 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class JFPrincipal extends JFrame implements ActionListener{
-  /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-private DesktopImagem desktop;
-  private JMenuBar mbBarra;
-  private JMenu meCadastro;
-  private JMenu mePedido;
-  private JMenu meSistema;
-  private JMenuItem miCategoria;
-  private JMenuItem miProduto;
-  private JMenuItem miCliente;
-  private JMenuItem miRegistrar;
-  private JMenuItem miSobre;
-  
+	public DesktopImagem desktop;
+	private JMenuBar mbBarra;
+	private JMenu meCadastro;
+	private JMenu mePedido;
+	private JMenu meSistema;
+	private JMenuItem miCategoria;
+	private JMenuItem miProduto;
+	private JMenuItem miCliente;
+	private JMenuItem miRegistrar;
+	private JMenuItem miSobre;
+	
+	
   public JFPrincipal() {
     setTitle("Sistema de registro de pedidos");
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -45,6 +44,7 @@ private DesktopImagem desktop;
     miRegistrar = new JMenuItem("Registrar");
     miSobre = new JMenuItem("Sobre ...");
     
+    
     meCadastro.setMnemonic('C');
     mePedido.setMnemonic('P');
     meSistema.setMnemonic('S');
@@ -52,7 +52,7 @@ private DesktopImagem desktop;
     miProduto.setMnemonic('P');
     miCliente.setMnemonic('C');
     miRegistrar.setMnemonic('R');
-    this.miVer.setMnemonic('V');
+    miVer.setMnemonic('V');
     miSobre.setMnemonic('o');
     
     setJMenuBar(mbBarra);
@@ -63,7 +63,7 @@ private DesktopImagem desktop;
     meCadastro.add(miProduto);
     meCadastro.add(miCliente);
     mePedido.add(miRegistrar);
-    mePedido.add(this.miVer);
+    mePedido.add(miVer);
     meSistema.add(miSobre);
     
     
@@ -78,6 +78,7 @@ private DesktopImagem desktop;
     miProduto.addActionListener(this);
     miRegistrar.addActionListener(this);
     miSobre.addActionListener(this);
+    miVer.addActionListener(this);
     
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
     setLocation((d.width-getWidth())/2,(d.height-getHeight())/2);
@@ -113,9 +114,13 @@ private DesktopImagem desktop;
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	else if(source == miVer) {
+		verPedido();
+	}
 	else if (source == miSobre) sobre();
   }
   
+   
   private void cadastrarCategoria() throws ClassNotFoundException, SQLException  {
     IFCategoria janela = new IFCategoria();
     janela.setLocation(10, 10);
