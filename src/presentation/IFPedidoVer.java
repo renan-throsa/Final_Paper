@@ -1,4 +1,4 @@
-package interfaces;
+package presentation;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
@@ -21,7 +21,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import persistence.ClienteDAO;
-import presentation.ModeloGrade;
 import transference.Cliente;
 
 public class IFPedidoVer extends JInternalFrame implements ItemListener, DocumentListener, ActionListener {
@@ -32,14 +31,18 @@ public class IFPedidoVer extends JInternalFrame implements ItemListener, Documen
 	protected JPanel pnEntrada;
 	protected JPanel pnCampos;
 
-	public IFPedidoVer() {
+	public IFPedidoVer() throws ClassNotFoundException, SQLException {
 		setTitle("Ver pedido");
-		setSize(375,400);
+		setSize(375, 400);
 		setClosable(true);
 		setIconifiable(true);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+		coCliente = new JComboBox<Cliente>();
+
+		coCliente.setModel(new DefaultComboBoxModel<Cliente>(new ClienteDAO().carregarCombo()));
+		
 		tbDados = new JTable(new ModeloGrade(new String[] { "Número", "Data", "Horário", "Id", "Status" }));
 		tbDados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbDados.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -49,15 +52,6 @@ public class IFPedidoVer extends JInternalFrame implements ItemListener, Documen
 		tbDados.getColumnModel().getColumn(2).setMaxWidth(75);
 		tbDados.getColumnModel().getColumn(3).setMaxWidth(75);
 		tbDados.getColumnModel().getColumn(4).setMaxWidth(75);
-
-		coCliente = new JComboBox<Cliente>();
-
-		try {
-			coCliente.setModel(new DefaultComboBoxModel<Cliente>(new ClienteDAO().carregarCombo()));
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		pnEntrada = new JPanel();
 		pnCampos = new JPanel();

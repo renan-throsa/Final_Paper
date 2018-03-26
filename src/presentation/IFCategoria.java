@@ -8,9 +8,7 @@ import persistence.CategoriaDAO;
 import transference.Categoria;
 
 public class IFCategoria extends IFCadastro {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	public IFCategoria() throws ClassNotFoundException, SQLException {

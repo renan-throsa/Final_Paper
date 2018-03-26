@@ -14,9 +14,7 @@ import transference.Categoria;
 import transference.Produto;
 
 public class IFProduto extends IFCadastro {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JFormattedTextField tfPreco;
 	private JComboBox<Categoria> coCategoria;
@@ -32,17 +30,14 @@ public class IFProduto extends IFCadastro {
 		pnCampos.add(tfPreco);
 		pnCampos.add(coCategoria);
 
-		
-			coCategoria.setModel(new DefaultComboBoxModel<Categoria>(new CategoriaDAO().carregarCombo()));
-		
+		coCategoria.setModel(new DefaultComboBoxModel<Categoria>(new CategoriaDAO().carregarCombo()));
+
 	}
 
 	public void atualizarGrade() throws ClassNotFoundException, SQLException {
-		
-			ResultSet rs = new ProdutoDAO().carregarGrade();
-			tbDados.setModel(new ModeloGrade(rs, new String[] { "Código", "Descrição" }));
-			tbDados.getColumnModel().getColumn(0).setMaxWidth(50);
-		
+		ResultSet rs = new ProdutoDAO().carregarGrade();
+		tbDados.setModel(new ModeloGrade(rs, new String[] { "Código", "Descrição" }));
+		tbDados.getColumnModel().getColumn(0).setMaxWidth(50);
 	}
 
 	public void incluir() throws SQLException, ClassNotFoundException {
@@ -52,11 +47,10 @@ public class IFProduto extends IFCadastro {
 		Categoria categoria = (Categoria) coCategoria.getSelectedItem();
 		p.setIdCategoria(categoria.getCodigo());
 
-	
-			new ProdutoDAO().incluir(p);
-			atualizarGrade();
-			tpAbas.setSelectedIndex(0);
-		
+		new ProdutoDAO().incluir(p);
+		atualizarGrade();
+		tpAbas.setSelectedIndex(0);
+
 	}
 
 	public void alterar() throws SQLException, ClassNotFoundException {
@@ -67,23 +61,22 @@ public class IFProduto extends IFCadastro {
 		Categoria categoria = (Categoria) coCategoria.getSelectedItem();
 		p.setIdCategoria(categoria.getCodigo());
 
-	
-			new ProdutoDAO().alterar(p);
-			atualizarGrade();
-			tpAbas.setSelectedIndex(0);
-	
+		new ProdutoDAO().alterar(p);
+		atualizarGrade();
+		tpAbas.setSelectedIndex(0);
+
 	}
 
 	public void excluir() throws NumberFormatException, SQLException, ClassNotFoundException {
-		
-			new ProdutoDAO().excluir(Integer.parseInt(tfCodigo.getText()));
-			ModeloGrade dtm = (ModeloGrade) tbDados.getModel();
-			dtm.removeRow(tbDados.getSelectedRow());
-			tpAbas.setSelectedIndex(0);
-	
+
+		new ProdutoDAO().excluir(Integer.parseInt(tfCodigo.getText()));
+		ModeloGrade dtm = (ModeloGrade) tbDados.getModel();
+		dtm.removeRow(tbDados.getSelectedRow());
+		tpAbas.setSelectedIndex(0);
+
 	}
 
-	protected void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException  {
+	protected void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException {
 		Produto p = new ProdutoDAO().pesquisar(codigo);
 		tfCodigo.setText(String.valueOf(p.getCodigo()));
 		tfDesc.setText(p.getDescricao());

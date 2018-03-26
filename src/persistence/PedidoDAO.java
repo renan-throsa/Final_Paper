@@ -37,7 +37,12 @@ public class PedidoDAO {
 			i.setIdPedido(p.getNumero());
 			new ItemDAO().incluir(i);
 		}
-
+		
+		
 		cc.confirmarTransacao();
 	}
+	
+	
+	
+	
 }

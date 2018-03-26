@@ -115,12 +115,16 @@ public class JFPrincipal extends JFrame implements ActionListener{
 			e1.printStackTrace();
 		}
 	else if(source == miVer) {
-		verPedido();
+		try {
+			verPedido();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	else if (source == miSobre) sobre();
   }
-  
-   
+     
   private void cadastrarCategoria() throws ClassNotFoundException, SQLException  {
     IFCategoria janela = new IFCategoria();
     janela.setLocation(10, 10);

@@ -13,13 +13,8 @@ import transference.Categoria;
 public class CategoriaDAO {
 	private ConexaoComercio cc;
 
-	public CategoriaDAO() throws ClassNotFoundException, SQLException  {
+	public CategoriaDAO() throws ClassNotFoundException, SQLException {
 		cc = new ConexaoComercio();
-	}
-	
-	//TODO method added for testing, do not forget to remove it latter.
-	public ConexaoComercio getConexao(){
-		return this.cc;
 	}
 
 	public void incluir(Categoria c) throws SQLException, SQLFeatureNotSupportedException {
