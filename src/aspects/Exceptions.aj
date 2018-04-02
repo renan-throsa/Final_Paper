@@ -106,8 +106,7 @@ public aspect Exceptions {
 				"Operation " + thisJoinPoint + " on " + connection + " took " + (System.nanoTime() - startTime));
 		return ret;
 	}
-	
-	
+		
 
 	// Constructors exceptions
 

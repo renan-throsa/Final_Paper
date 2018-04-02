@@ -1,6 +1,6 @@
 package aspects;
 
-public aspect TransactionManager  { //extends Transactions
+public aspect TransactionManager{ 
 	
 	
 }

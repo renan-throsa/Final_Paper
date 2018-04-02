@@ -16,6 +16,10 @@ public class CategoriaDAO {
 	public CategoriaDAO() throws ClassNotFoundException, SQLException {
 		cc = new ConexaoComercio();
 	}
+	
+	public ConexaoComercio getConnection() {
+		return this.cc;
+	}
 
 	public void incluir(Categoria c) throws SQLException, SQLFeatureNotSupportedException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("INSERT INTO CATEGORIA (DESCRICAO) VALUES(?)",
