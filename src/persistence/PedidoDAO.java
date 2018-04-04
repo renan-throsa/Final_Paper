@@ -17,6 +17,10 @@ public class PedidoDAO {
 		cc = new ConexaoComercio();
 	}
 
+	public ConexaoComercio getConnection() {
+		return cc;
+	}
+	
 	public void incluir(Pedido p) throws SQLException,SQLFeatureNotSupportedException, ClassNotFoundException {
 		PreparedStatement pst = cc.getConexao().prepareStatement(
 				"INSERT INTO PEDIDO(DATA,HORARIO,ID_CLIENTE,STATUS) " + "VALUES(?,?,?,?)",

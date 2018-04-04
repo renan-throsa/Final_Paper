@@ -7,9 +7,14 @@ import java.sql.SQLException;
 import javax.swing.JMenuItem;
 
 import connection.ConexaoComercio;
+import interfaces.Connectable;
 import interfaces.Downloadable;
 import interfaces.Order;
+import persistence.CategoriaDAO;
+import persistence.ClienteDAO;
+import persistence.ItemDAO;
 import persistence.PedidoDAO;
+import persistence.ProdutoDAO;
 import presentation.IFPedidoVer;
 import presentation.JFPrincipal;
 
@@ -36,5 +41,11 @@ public JMenuItem JFPrincipal.miVer = new JMenuItem("Ver");
 		pst.setInt(1,codigo);
 		return pst.executeQuery();
 	}
+	
+	declare parents: CategoriaDAO implements Connectable;
+	
+	declare parents: ClienteDAO implements Connectable;
+	declare parents: ItemDAO implements Connectable;
+	declare parents: ProdutoDAO implements Connectable;
 	
 }

@@ -9,6 +9,9 @@ import transference.Item;
 public class ItemDAO {
 	private ConexaoComercio cc;
 
+	public ConexaoComercio getConnection() {
+		return cc;
+	}
 	public ItemDAO() throws ClassNotFoundException, SQLException {
 		cc = new ConexaoComercio();
 	}

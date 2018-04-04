@@ -15,6 +15,9 @@ public class ProdutoDAO {
   public ProdutoDAO() throws ClassNotFoundException, SQLException {
     cc = new ConexaoComercio();
   }
+  public ConexaoComercio getConnection() {
+		return cc;
+	}
   
   public void incluir(Produto c) throws SQLException {
     PreparedStatement pst = cc.getConexao().prepareStatement(

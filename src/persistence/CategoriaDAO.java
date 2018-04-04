@@ -16,9 +16,9 @@ public class CategoriaDAO {
 	public CategoriaDAO() throws ClassNotFoundException, SQLException {
 		cc = new ConexaoComercio();
 	}
-	
+
 	public ConexaoComercio getConnection() {
-		return this.cc;
+		return cc;
 	}
 
 	public void incluir(Categoria c) throws SQLException, SQLFeatureNotSupportedException {
@@ -33,6 +33,7 @@ public class CategoriaDAO {
 			c.setCodigo(rs.getInt(1));
 		rs.close();
 		pst.close();
+
 	}
 
 	public void alterar(Categoria c) throws SQLException, SQLFeatureNotSupportedException {

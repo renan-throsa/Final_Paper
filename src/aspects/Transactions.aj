@@ -4,14 +4,14 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 import java.sql.SQLException;
 
-import persistence.CategoriaDAO;
+import interfaces.Connectable;
 
 public aspect Transactions {
 
-	public pointcut transactionOperation(CategoriaDAO dao)
-	: execution( public * CategoriaDAO.*(..) throws SQLException ) && target(dao);
+	public pointcut transactionOperation(Connectable dao)
+	: execution( public * Connectable+.*(..) throws SQLException ) && target(dao);
 
-	Object around(CategoriaDAO dao): transactionOperation(dao) {
+	Object around(Connectable dao): transactionOperation(dao) {
 		try {
 			Object ret = proceed(dao);
 			showMessageDialog(null, "Operação realizada com sucesso!");

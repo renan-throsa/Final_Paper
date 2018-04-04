@@ -16,6 +16,10 @@ public class ClienteDAO {
     cc = new ConexaoComercio();
   }
   
+  public ConexaoComercio getConnection() {
+		return cc;
+	}
+  
   public void incluir(Cliente c) throws SQLException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "INSERT INTO CLIENTE (NOME,CPF,NASCIMENTO) VALUES(?,?,?)",
