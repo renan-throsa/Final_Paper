@@ -17,8 +17,7 @@ public aspect Exceptions {
 	 * object identifier.
 	 */
 	// Methods exceptions
-	public pointcut SQLExptions(Object object): execution( * *.*(..) throws SQLException ) && target(object);
-
+	
 	public pointcut SQLFNSExceptions(): execution(* *.*(..)throws SQLFeatureNotSupportedException);
 
 	public pointcut NFEExceptions(): execution(* *.*(..)throws NumberFormatException);
@@ -36,17 +35,6 @@ public aspect Exceptions {
 	public pointcut UOExceptions(): execution(* *.*(..)throws UnsupportedOperationException );
 
 	public pointcut IAExceptions(): execution(* *.*(..)throws IllegalArgumentException );
-
-	after(Object object) throwing (SQLException ex): SQLExptions(object){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Falha MySQL ocorrida", 0);
-		if(object != null) {
-			try {
-				((ConexaoComercio)object).cancelarTransacao();
-			} catch (SQLException e) {
-				
-			}
-		}
-	}
 
 	after() throwing (SQLFeatureNotSupportedException ex): SQLFNSExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Caracteristica MySQL não suportada", 0);
@@ -105,6 +93,7 @@ public aspect Exceptions {
 		System.out.println(
 				"Operation " + thisJoinPoint + " on " + connection + " took " + (System.nanoTime() - startTime));
 		return ret;
+		
 	}
 		
 
