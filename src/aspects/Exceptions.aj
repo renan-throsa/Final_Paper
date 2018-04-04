@@ -12,11 +12,9 @@ import presentation.IFCliente;
 
 public aspect Exceptions {
 
-	/*
-	 * The return object is collected in returning() by specifying the type and
-	 * object identifier.
-	 */
 	// Methods exceptions
+
+	public pointcut DAOExceptions(): execution(* *.*(..)throws DAOException);
 	
 	public pointcut SQLFNSExceptions(): execution(* *.*(..)throws SQLFeatureNotSupportedException);
 
@@ -36,14 +34,19 @@ public aspect Exceptions {
 
 	public pointcut IAExceptions(): execution(* *.*(..)throws IllegalArgumentException );
 
+	//TODO
+	after() throwing (DAOException dex): DAOExceptions(){
+		JOptionPane.showMessageDialog(null, dex.getMessage(), "Erro", 0);
+
+	}
+
 	after() throwing (SQLFeatureNotSupportedException ex): SQLFNSExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Caracteristica MySQL não suportada", 0);
 
 	}
 
 	after() throwing (ParseException ex): PEExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Início da string não pode ser analisado.",
-				0);
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "Início da string não pode ser analisado.", 0);
 
 	}
 
@@ -81,7 +84,7 @@ public aspect Exceptions {
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Elemento especificado não suportado", 0);
 
 	}
-
+/*
 	// around advises
 	Object around(ConexaoComercio connection) 
 	: call (public void ConexaoComercio.*(..) )
@@ -93,12 +96,9 @@ public aspect Exceptions {
 		System.out.println(
 				"Operation " + thisJoinPoint + " on " + connection + " took " + (System.nanoTime() - startTime));
 		return ret;
-		
+
 	}
-		
-
-	// Constructors exceptions
-
+*/
 	public pointcut CNFException(): initialization( public ConexaoComercio.new(..) throws ClassNotFoundException);
 
 	public pointcut SQLExceptionExeption(): initialization( public ConexaoComercio.new(..) throws SQLException);
