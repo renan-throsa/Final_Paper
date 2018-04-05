@@ -1,20 +1,24 @@
 package aspects;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
 import java.sql.SQLException;
+import java.util.Vector;
 
 import interfaces.Connectable;
+import transference.Categoria;
+import transference.Produto;
 
 public aspect Transactions {
 
 	public pointcut transactionOperation(Connectable dao)
-	: execution( public * Connectable+.*(..) throws SQLException ) && target(dao);
+		: (execution( public void Connectable+.*(..) throws SQLException ) 
+			||execution( public Vector Connectable+.*(..) throws SQLException )
+				||execution( public Categoria Connectable+.*(..) throws SQLException )
+					||execution( public Produto Connectable+.*(..) throws SQLException ))
+					&& target(dao);
 
 	Object around(Connectable dao): transactionOperation(dao) {
 		try {
 			Object ret = proceed(dao);
-			showMessageDialog(null, "Operação realizada com sucesso!");
 			return ret;
 		} catch (SQLException e) {
 			try {
@@ -33,6 +37,7 @@ public aspect Transactions {
 				return new DAOException("Erro ao fechar a conexão.", e2);
 			}
 		}
+
 	}
 
 }

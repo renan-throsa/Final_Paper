@@ -43,7 +43,6 @@ public JMenuItem JFPrincipal.miVer = new JMenuItem("Ver");
 	}
 	
 	declare parents: CategoriaDAO implements Connectable;
-	
 	declare parents: ClienteDAO implements Connectable;
 	declare parents: ItemDAO implements Connectable;
 	declare parents: ProdutoDAO implements Connectable;

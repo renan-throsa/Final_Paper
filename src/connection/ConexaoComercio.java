@@ -23,6 +23,7 @@ public class ConexaoComercio {
 
 	public Connection getConexao() {
 		return conexao;
+
 	}
 
 	public void fechar() throws SQLException {

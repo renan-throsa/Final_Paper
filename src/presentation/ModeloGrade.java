@@ -27,28 +27,26 @@ public class ModeloGrade extends AbstractTableModel {
 			colunas.add(titulos[i]);
 		linhas = new ArrayList<List<Object>>();
 	}
-	
-	//TODO Handle Exception
+
 	public ModeloGrade(ResultSet rs, String[] titulos) throws SQLException {
 		this();
 
-		
-			ResultSetMetaData rsmd = rs.getMetaData();
+		ResultSetMetaData rsmd = rs.getMetaData();
 
-			if (titulos != null)
-				for (int i = 0; i < titulos.length; i++)
-					colunas.add(titulos[i]);
-			else
-				for (int i = 1; i <= rsmd.getColumnCount(); i++)
-					colunas.add(rsmd.getColumnLabel(i));
+		if (titulos != null)
+			for (int i = 0; i < titulos.length; i++)
+				colunas.add(titulos[i]);
+		else
+			for (int i = 1; i <= rsmd.getColumnCount(); i++)
+				colunas.add(rsmd.getColumnLabel(i));
 
-			while (rs.next()) {
-				ArrayList<Object> linha = new ArrayList<Object>();
-				for (int i = 1; i <= rsmd.getColumnCount(); i++)
-					linha.add(rs.getObject(i));
-				linhas.add(linha);
-			}
-		
+		while (rs.next()) {
+			ArrayList<Object> linha = new ArrayList<Object>();
+			for (int i = 1; i <= rsmd.getColumnCount(); i++)
+				linha.add(rs.getObject(i));
+			linhas.add(linha);
+		}
+
 	}
 
 	public List<List<Object>> getLinhas() {
