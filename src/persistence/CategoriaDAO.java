@@ -17,10 +17,6 @@ public class CategoriaDAO {
 		cc = new ConexaoComercio();
 	}
 
-	public ConexaoComercio getConnection() {
-		return cc;
-	}
-
 	public void incluir(Categoria c) throws SQLException, SQLFeatureNotSupportedException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("INSERT INTO CATEGORIA (DESCRICAO) VALUES(?)",
 				Statement.RETURN_GENERATED_KEYS);
@@ -33,7 +29,7 @@ public class CategoriaDAO {
 			c.setCodigo(rs.getInt(1));
 		rs.close();
 		pst.close();
-
+	
 	}
 
 	public void alterar(Categoria c) throws SQLException, SQLFeatureNotSupportedException {
