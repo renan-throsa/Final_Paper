@@ -20,6 +20,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import aspects.DAOException;
 import persistence.ClienteDAO;
 import transference.Cliente;
 
@@ -31,7 +32,7 @@ public class IFPedidoVer extends JInternalFrame implements ItemListener, Documen
 	protected JPanel pnEntrada;
 	protected JPanel pnCampos;
 
-	public IFPedidoVer() throws ClassNotFoundException, SQLException {
+	public IFPedidoVer() throws ClassNotFoundException, SQLException, DAOException {
 		setTitle("Ver pedido");
 		setSize(375, 400);
 		setClosable(true);

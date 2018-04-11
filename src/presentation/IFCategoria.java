@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 
+import aspects.DAOException;
 import persistence.CategoriaDAO;
 import transference.Categoria;
 
@@ -11,11 +12,11 @@ public class IFCategoria extends IFCadastro {
 	
 	private static final long serialVersionUID = 1L;
 
-	public IFCategoria() throws ClassNotFoundException, SQLException {
+	public IFCategoria() throws ClassNotFoundException, SQLException, DAOException {
 		super("Cadastro de categorias", 300, 2);
 	}
 
-	protected void atualizarGrade() throws ClassNotFoundException, SQLException  {
+	protected void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException  {
 
 		ResultSet rs = new CategoriaDAO().carregarGrade();
 		tbDados.setModel(new ModeloGrade(rs, new String[] { "Código", "Descricao" }));
@@ -23,7 +24,7 @@ public class IFCategoria extends IFCadastro {
 
 	}
 
-	protected void incluir() throws SQLFeatureNotSupportedException, SQLException, ClassNotFoundException {
+	protected void incluir() throws SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException {
 		Categoria c = new Categoria();
 		c.setDescricao(tfDesc.getText());
 		new CategoriaDAO().incluir(c);
@@ -32,7 +33,7 @@ public class IFCategoria extends IFCadastro {
 
 	}
 
-	protected void alterar() throws SQLFeatureNotSupportedException, SQLException, ClassNotFoundException {
+	protected void alterar() throws SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException {
 		Categoria c = new Categoria();
 		c.setCodigo(tfCodigo.getText());
 		c.setDescricao(tfDesc.getText());
@@ -42,7 +43,7 @@ public class IFCategoria extends IFCadastro {
 
 	}
 
-	protected void excluir() throws SQLException, ClassNotFoundException {
+	protected void excluir() throws SQLException, ClassNotFoundException, DAOException {
 		
 			int codigo = Integer.parseInt(tfCodigo.getText());
 			new CategoriaDAO().excluir(codigo);
@@ -52,7 +53,7 @@ public class IFCategoria extends IFCadastro {
 	
 	}
 
-	protected void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException  {
+	protected void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException, DAOException  {
 		Categoria c = new CategoriaDAO().pesquisar(codigo);
 		tfCodigo.setText(String.valueOf(c.getCodigo()));
 		tfDesc.setText(c.getDescricao());

@@ -1,16 +1,38 @@
 package presentation;
 
-import static javax.swing.JOptionPane.*;
-import java.awt.*;
-import java.awt.event.*;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
+import java.awt.BorderLayout;
+import java.awt.Cursor;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.text.ParseException;
 
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.text.JTextComponent;
 
+import aspects.DAOException;
+
+@SuppressWarnings("serial")
 public abstract class IFCadastro extends JInternalFrame implements ChangeListener, ActionListener {
 	protected JTabbedPane tpAbas;
 	protected JTable tbDados;
@@ -24,7 +46,8 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 	protected JButton btAlterar;
 	protected JButton btExcluir;
 
-	public IFCadastro(String titulo, int largura, int campos) throws ClassNotFoundException, SQLException {
+	@SuppressWarnings("deprecation")
+	public IFCadastro(String titulo, int largura, int campos) throws ClassNotFoundException, SQLException, DAOException {
 		setTitle(titulo);
 		setSize(largura, 100 + 30 * campos);
 		setClosable(true);
@@ -91,6 +114,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 		atualizarGrade();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void stateChanged(ChangeEvent e) {
 		if (tpAbas.getSelectedIndex() != 0)
 			return;
@@ -126,18 +150,17 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 			}
 	}
 
-	protected abstract void atualizarGrade() throws ClassNotFoundException, SQLException;
+	protected abstract void atualizarGrade() throws ClassNotFoundException, SQLException,DAOException;
 
 	protected abstract void incluir()
-			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException;
+			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException;
 
 	protected abstract void alterar()
-			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException;
+			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException,DAOException;
 
-	protected abstract void excluir() throws SQLException, ClassNotFoundException;
+	protected abstract void excluir() throws SQLException, ClassNotFoundException,DAOException;
 
-	protected abstract void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException;
-	
+	protected abstract void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException, DAOException;
 
 	class MouseHandler extends MouseAdapter {
 		public void mouseReleased(MouseEvent e) {

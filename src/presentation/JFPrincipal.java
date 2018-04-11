@@ -14,6 +14,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import aspects.DAOException;
+
 public class JFPrincipal extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -91,62 +93,57 @@ public class JFPrincipal extends JFrame implements ActionListener{
 			cadastrarCategoria();
 		} catch (Exception e3) {
 			// TODO Auto-generated catch block
-			e3.printStackTrace();
 		}
 	else if (source == miProduto)
 		try {
 			cadastrarProduto();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			}
 	else if (source == miCliente)
 		try {
 			cadastrarCliente();
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
 		}
 	else if (source == miRegistrar)
 		try {
 			registrarPedido();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 	else if(source == miVer) {
 		try {
 			verPedido();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 	}
 	else if (source == miSobre) sobre();
   }
      
-  private void cadastrarCategoria() throws ClassNotFoundException, SQLException  {
+  private void cadastrarCategoria() throws ClassNotFoundException, SQLException, DAOException  {
     IFCategoria janela = new IFCategoria();
     janela.setLocation(10, 10);
     desktop.add(janela);
     janela.setVisible(true);
   }
   
-  private void cadastrarProduto() throws SQLException, ClassNotFoundException {
+  private void cadastrarProduto() throws SQLException, ClassNotFoundException,DAOException {
     IFProduto janela = new IFProduto();
     janela.setLocation(20, 20);
     desktop.add(janela);
     janela.setVisible(true);
   }
   
-  private void cadastrarCliente() throws ClassNotFoundException, NullPointerException, SQLException, ParseException  {
+  private void cadastrarCliente() throws ClassNotFoundException, NullPointerException, SQLException, ParseException, DAOException  {
     IFCliente janela = new IFCliente();
     janela.setLocation(30, 30);
     desktop.add(janela);
     janela.setVisible(true);
   }
   
-  private void registrarPedido() throws ClassNotFoundException, NullPointerException, SQLException  {
+  private void registrarPedido() throws ClassNotFoundException, NullPointerException, SQLException, DAOException  {
     IFPedidoRegistrar janela = new IFPedidoRegistrar();
     janela.setLocation(10, 10);
     desktop.add(janela);

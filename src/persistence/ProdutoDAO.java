@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import aspects.DAOException;
 import connection.ConexaoComercio;
 import transference.Produto;
 
@@ -19,7 +20,7 @@ public class ProdutoDAO {
 		return cc;
 	}
   
-  public void incluir(Produto c) throws SQLException {
+  public void incluir(Produto c) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "INSERT INTO PRODUTO (DESCRICAO,PRECO,ID_CATEGORIA) " +
       "VALUES(?,?,?)",Statement.RETURN_GENERATED_KEYS);
@@ -35,7 +36,7 @@ public class ProdutoDAO {
     pst.close();
   }
   
-  public void alterar(Produto c) throws SQLException {
+  public void alterar(Produto c) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ?, " +
       "ID_CATEGORIA = ? WHERE CODIGO = ?");
@@ -48,7 +49,7 @@ public class ProdutoDAO {
     cc.confirmarTransacao();
   }
   
-  public void excluir(int codigo) throws SQLException {
+  public void excluir(int codigo) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "DELETE FROM PRODUTO WHERE CODIGO = ?");
     pst.setInt(1, codigo);
@@ -57,13 +58,13 @@ public class ProdutoDAO {
     cc.confirmarTransacao();
   }
   
-  public ResultSet carregarGrade( ) throws SQLException {
+  public ResultSet carregarGrade( ) throws SQLException,DAOException {
     Statement stm = cc.getConexao().createStatement();
     return stm.executeQuery(
       "SELECT CODIGO,DESCRICAO FROM PRODUTO ORDER BY DESCRICAO");
   }
   
-  public Vector<Produto> carregarCombo( ) throws SQLException {
+  public Vector<Produto> carregarCombo( ) throws SQLException,DAOException {
     Statement stm = cc.getConexao().createStatement();
     ResultSet rs = stm.executeQuery(
       "SELECT CODIGO,DESCRICAO FROM PRODUTO ORDER BY DESCRICAO");
@@ -74,7 +75,7 @@ public class ProdutoDAO {
     return v;
   }
   
-  public Produto pesquisar(int codigo) throws SQLException {
+  public Produto pesquisar(int codigo) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "SELECT * FROM PRODUTO WHERE CODIGO = ?");
     pst.setInt(1,codigo);
@@ -84,7 +85,7 @@ public class ProdutoDAO {
       rs.getDouble("PRECO"),rs.getInt("ID_CATEGORIA"));
   }
   
-  public Produto pesquisar(String codigo) throws NumberFormatException,SQLException {
+  public Produto pesquisar(String codigo) throws NumberFormatException,SQLException,DAOException {
     return pesquisar(Integer.parseInt(codigo));
   }
 }

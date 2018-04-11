@@ -3,6 +3,7 @@ package persistence;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import aspects.DAOException;
 import connection.ConexaoComercio;
 import transference.Item;
 
@@ -16,7 +17,7 @@ public class ItemDAO {
 		cc = new ConexaoComercio();
 	}
 
-	public void incluir(Item item) throws SQLException {
+	public void incluir(Item item) throws SQLException,DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("INSERT INTO ITEM VALUES(?,?,?,?)");
 		pst.setInt(1, item.getIdPedido());
 		pst.setInt(2, item.getIdProduto());

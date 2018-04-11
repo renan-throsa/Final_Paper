@@ -19,7 +19,7 @@ public JMenuItem JFPrincipal.miVer = new JMenuItem("Ver");
 	
 	declare parents: JFPrincipal implements Order;
 	
-	public void JFPrincipal.verPedido() throws ClassNotFoundException, SQLException {
+	public void JFPrincipal.verPedido() throws ClassNotFoundException, SQLException, DAOException {
 		IFPedidoVer janela = new IFPedidoVer();
 		janela.setLocation(10, 10);
 		desktop.add(janela);
@@ -28,7 +28,7 @@ public JMenuItem JFPrincipal.miVer = new JMenuItem("Ver");
 
 	declare parents: PedidoDAO implements Downloadable;
 	
-	public ResultSet PedidoDAO.loadGrid(int codigo)throws ClassNotFoundException, SQLException {
+	public ResultSet PedidoDAO.loadGrid(int codigo)throws ClassNotFoundException, SQLException,DAOException {
 		ConexaoComercio cc = new ConexaoComercio();
 		PreparedStatement pst = cc.getConexao().prepareStatement(
 				"select NUMERO, DATA, HORARIO,ID_CLIENTE, STATUS from comercio.PEDIDO, "

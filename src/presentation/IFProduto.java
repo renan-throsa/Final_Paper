@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 
+import aspects.DAOException;
 import persistence.CategoriaDAO;
 import persistence.ProdutoDAO;
 import transference.Categoria;
@@ -19,7 +20,8 @@ public class IFProduto extends IFCadastro {
 	private JFormattedTextField tfPreco;
 	private JComboBox<Categoria> coCategoria;
 
-	public IFProduto() throws SQLException, ClassNotFoundException {
+	@SuppressWarnings("deprecation")
+	public IFProduto() throws SQLException, ClassNotFoundException,DAOException {
 		super("Cadastro de produtos", 300, 4);
 
 		tfPreco = new JFormattedTextField(new Double(0));
@@ -34,13 +36,13 @@ public class IFProduto extends IFCadastro {
 
 	}
 
-	public void atualizarGrade() throws ClassNotFoundException, SQLException {
+	public void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException {
 		ResultSet rs = new ProdutoDAO().carregarGrade();
 		tbDados.setModel(new ModeloGrade(rs, new String[] { "Código", "Descrição" }));
 		tbDados.getColumnModel().getColumn(0).setMaxWidth(50);
 	}
 
-	public void incluir() throws SQLException, ClassNotFoundException {
+	public void incluir() throws SQLException, ClassNotFoundException, DAOException {
 		Produto p = new Produto();
 		p.setDescricao(tfDesc.getText());
 		p.setPreco(tfPreco.getText());
@@ -53,7 +55,7 @@ public class IFProduto extends IFCadastro {
 
 	}
 
-	public void alterar() throws SQLException, ClassNotFoundException {
+	public void alterar() throws SQLException, ClassNotFoundException, DAOException {
 		Produto p = new Produto();
 		p.setCodigo(tfCodigo.getText());
 		p.setDescricao(tfDesc.getText());
@@ -67,7 +69,7 @@ public class IFProduto extends IFCadastro {
 
 	}
 
-	public void excluir() throws NumberFormatException, SQLException, ClassNotFoundException {
+	public void excluir() throws NumberFormatException, SQLException, ClassNotFoundException, DAOException {
 
 		new ProdutoDAO().excluir(Integer.parseInt(tfCodigo.getText()));
 		ModeloGrade dtm = (ModeloGrade) tbDados.getModel();
@@ -76,7 +78,7 @@ public class IFProduto extends IFCadastro {
 
 	}
 
-	protected void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException {
+	protected void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException ,DAOException{
 		Produto p = new ProdutoDAO().pesquisar(codigo);
 		tfCodigo.setText(String.valueOf(p.getCodigo()));
 		tfDesc.setText(p.getDescricao());

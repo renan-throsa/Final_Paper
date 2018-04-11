@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.Statement;
 
+import aspects.DAOException;
 import connection.ConexaoComercio;
 import transference.Item;
 import transference.Pedido;
@@ -21,7 +22,7 @@ public class PedidoDAO {
 		return cc;
 	}
 	
-	public void incluir(Pedido p) throws SQLException,SQLFeatureNotSupportedException, ClassNotFoundException {
+	public void incluir(Pedido p) throws SQLException,SQLFeatureNotSupportedException, ClassNotFoundException, DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement(
 				"INSERT INTO PEDIDO(DATA,HORARIO,ID_CLIENTE,STATUS) " + "VALUES(?,?,?,?)",
 				Statement.RETURN_GENERATED_KEYS);

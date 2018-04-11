@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import aspects.DAOException;
 import connection.ConexaoComercio;
 import transference.Cliente;
 
@@ -20,7 +21,7 @@ public class ClienteDAO {
 		return cc;
 	}
   
-  public void incluir(Cliente c) throws SQLException {
+  public void incluir(Cliente c) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "INSERT INTO CLIENTE (NOME,CPF,NASCIMENTO) VALUES(?,?,?)",
       Statement.RETURN_GENERATED_KEYS);
@@ -36,7 +37,7 @@ public class ClienteDAO {
     pst.close();
   }
   
-  public void alterar(Cliente c) throws SQLException {
+  public void alterar(Cliente c) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "UPDATE CLIENTE SET NOME = ?, CPF = ?, NASCIMENTO = ? " +
       "WHERE CODIGO = ?");
@@ -49,7 +50,7 @@ public class ClienteDAO {
     cc.confirmarTransacao();
   }
   
-  public void excluir(int codigo) throws SQLException {
+  public void excluir(int codigo) throws SQLException,DAOException {
     PreparedStatement pst = cc.getConexao().prepareStatement(
       "DELETE FROM CLIENTE WHERE CODIGO = ?");
     pst.setInt(1, codigo);
@@ -58,13 +59,13 @@ public class ClienteDAO {
     cc.confirmarTransacao();
   }
   
-  public ResultSet carregarGrade( ) throws SQLException {
+  public ResultSet carregarGrade( ) throws SQLException,DAOException {
     Statement stm = cc.getConexao().createStatement();
     return stm.executeQuery(
       "SELECT CODIGO,NOME FROM CLIENTE ORDER BY NOME");
   }
   
-  public Vector<Cliente> carregarCombo( ) throws SQLException  {
+  public Vector<Cliente> carregarCombo( ) throws SQLException,DAOException {
     Statement stm = cc.getConexao().createStatement();
     ResultSet rs = stm.executeQuery(
       "SELECT CODIGO,NOME FROM CLIENTE ORDER BY NOME");

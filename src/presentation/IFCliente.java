@@ -5,18 +5,18 @@ import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.text.MaskFormatter;
+
+import aspects.DAOException;
 import persistence.ClienteDAO;
 import transference.Cliente;
 
 public class IFCliente extends IFCadastro {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JFormattedTextField tfCpf;
 	private JFormattedTextField tfNascimento;
 
-	public IFCliente() throws ClassNotFoundException, SQLException, ParseException, NullPointerException {
+	public IFCliente() throws ClassNotFoundException, SQLException, ParseException, NullPointerException, DAOException {
 		super("Cadastro de clientes", 300, 4);
 
 		MaskFormatter fmtCpf = new MaskFormatter("###.###.###-##");
@@ -34,7 +34,7 @@ public class IFCliente extends IFCadastro {
 		pnCampos.add(tfNascimento);
 	}
 
-	public void atualizarGrade() throws ClassNotFoundException, SQLException {
+	public void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException {
 
 		ResultSet rs = new ClienteDAO().carregarGrade();
 		tbDados.setModel(new ModeloGrade(rs, new String[] { "Código", "Nome" }));
@@ -42,7 +42,7 @@ public class IFCliente extends IFCadastro {
 
 	}
 
-	public void incluir() throws ParseException, ClassNotFoundException, SQLException {
+	public void incluir() throws ParseException, ClassNotFoundException, SQLException,DAOException {
 		Cliente c = new Cliente();
 		c.setNome(tfDesc.getText());
 		c.setCpf(tfCpf.getText());
@@ -53,7 +53,7 @@ public class IFCliente extends IFCadastro {
 
 	}
 
-	public void alterar() throws SQLException, ParseException, ClassNotFoundException {
+	public void alterar() throws SQLException, ParseException, ClassNotFoundException, DAOException {
 		Cliente c = new Cliente();
 		c.setCodigo(tfCodigo.getText());
 		c.setNome(tfDesc.getText());
@@ -65,7 +65,7 @@ public class IFCliente extends IFCadastro {
 
 	}
 
-	public void excluir() throws NumberFormatException, SQLException, ClassNotFoundException {
+	public void excluir() throws NumberFormatException, SQLException, ClassNotFoundException, DAOException {
 
 		new ClienteDAO().excluir(Integer.parseInt(tfCodigo.getText()));
 		ModeloGrade dtm = (ModeloGrade) tbDados.getModel();

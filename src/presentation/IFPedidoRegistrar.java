@@ -31,6 +31,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import aspects.DAOException;
 import persistence.ClienteDAO;
 import persistence.PedidoDAO;
 import persistence.ProdutoDAO;
@@ -57,7 +58,7 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 	protected JPanel pnSul;
 	protected JPanel pnAdicionar;
 
-	public IFPedidoRegistrar() throws ClassNotFoundException, SQLException, NullPointerException {
+	public IFPedidoRegistrar() throws ClassNotFoundException, SQLException, NullPointerException, DAOException {
 		setTitle("Registro de pedido");
 		setSize(500, 400);
 		setClosable(true);
@@ -189,7 +190,7 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 		}
 	}
 
-	public void exibirPreco() throws SQLException, ClassNotFoundException {
+	public void exibirPreco() throws SQLException, ClassNotFoundException, DAOException {
 		Produto p = (Produto) coProduto.getSelectedItem();
 
 		p = new ProdutoDAO().pesquisar(p.getCodigo());
