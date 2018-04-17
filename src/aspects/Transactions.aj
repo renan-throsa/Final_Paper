@@ -25,28 +25,24 @@ public aspect Transactions {
 		try {
 			Object ret = proceed(dao);
 
-			if (method.equals("incluir") || method.equals("alterar") || method.equals("excluir")) {
-				JOptionPane.showMessageDialog(null,
-						"Operação " + thisJoinPoint.getSignature().getName() + " realizada com sucesso!", "Mensagem",
-						JOptionPane.INFORMATION_MESSAGE);
+			if (shouldShow(method)) {
+				showMessage(method);
 			}
 			return ret;
 		} catch (SQLException e) {
 			try {
 				if (dao.getConnection() != null)
 					dao.getConnection().cancelarTransacao();
-				throw new DAOException("Erro na operação "+method, e);
+				throw new DAOException("Erro na operação " + method, e);
 			} catch (SQLException e1) {
-				throw new DAOException("Erro no operação "+method +" e rollback.", e1);
+				throw new DAOException("Erro no operação " + method + " e rollback.", e1);
 			}
 
-		}
-
-		finally {
+		}finally {
 			try {
 				if (dao.getConnection() != null)
 					dao.getConnection().fechar();
-				if (method.equals("incluir") || method.equals("alterar") || method.equals("excluir")) {
+				if (shouldShow(method)) {
 
 					JOptionPane.showMessageDialog(null, "Conexão fechada com sucesso!", "Mensagem",
 							JOptionPane.INFORMATION_MESSAGE);
@@ -62,7 +58,7 @@ public aspect Transactions {
 	: execution( public ResultSet Connectable+.*(..) throws SQLException ) 
 			&& target(dao);
 
-	Object around(Connectable dao)throws DAOException: queryOperation(dao) {
+	Object around(Connectable dao) throws DAOException: queryOperation(dao) {
 		try {
 			Object ret = proceed(dao);
 			return ret;
@@ -76,6 +72,16 @@ public aspect Transactions {
 			}
 
 		}
+
+	}
+
+	private boolean shouldShow(String method) {
+		return method.equals("incluir") || method.equals("alterar") || method.equals("excluir");
+	}
+
+	private void showMessage(String method) {
+		JOptionPane.showMessageDialog(null, "Operação " + method + " realizada com sucesso!", "Mensagem",
+				JOptionPane.INFORMATION_MESSAGE);
 
 	}
 

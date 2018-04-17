@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
-public aspect Handler {
+privileged public aspect Handler {
 
 	/**
 	 * I do not know why,but i get an error when this aspect is in another package. 
