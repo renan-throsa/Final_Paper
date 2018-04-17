@@ -7,7 +7,7 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.sql.Statement;
 import java.util.Vector;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import connection.ConexaoComercio;
 import transference.Categoria;
 

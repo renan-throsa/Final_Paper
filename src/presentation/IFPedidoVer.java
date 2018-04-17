@@ -20,7 +20,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import persistence.ClienteDAO;
 import transference.Cliente;
 

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.Statement;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import connection.ConexaoComercio;
 import transference.Item;
 import transference.Pedido;

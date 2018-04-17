@@ -1,15 +1,10 @@
 package presentation;
 
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
-
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.text.ParseException;
@@ -30,7 +25,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.JTextComponent;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
+import presentation.Handler.MouseHandler;
+
 
 @SuppressWarnings("serial")
 public abstract class IFCadastro extends JInternalFrame implements ChangeListener, ActionListener {
@@ -45,9 +42,11 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 	protected JButton btIncluir;
 	protected JButton btAlterar;
 	protected JButton btExcluir;
-
+	
+	
 	@SuppressWarnings("deprecation")
-	public IFCadastro(String titulo, int largura, int campos) throws ClassNotFoundException, SQLException, DAOException {
+	public IFCadastro(String titulo, int largura, int campos)
+			throws ClassNotFoundException, SQLException, DAOException {
 		setTitle(titulo);
 		setSize(largura, 100 + 30 * campos);
 		setClosable(true);
@@ -64,7 +63,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 		tfCodigo = new JFormattedTextField(new Integer(0));
 		tfCodigo.setEnabled(false);
 		tfDesc = new JTextField();
-
+		
 		btIncluir = new JButton("Incluir");
 		btAlterar = new JButton("Alterar");
 		btExcluir = new JButton("Excluir");
@@ -106,7 +105,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 		getContentPane().add(tpAbas, BorderLayout.CENTER);
 
 		tpAbas.addChangeListener(this);
-		tbDados.addMouseListener(new MouseHandler());
+		tbDados.addMouseListener( new MouseHandler(this));
 		btIncluir.addActionListener(this);
 		btAlterar.addActionListener(this);
 		btExcluir.addActionListener(this);
@@ -150,35 +149,16 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 			}
 	}
 
-	protected abstract void atualizarGrade() throws ClassNotFoundException, SQLException,DAOException;
+	protected abstract void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException;
 
 	protected abstract void incluir()
 			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException;
 
 	protected abstract void alterar()
-			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException,DAOException;
+			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException;
 
-	protected abstract void excluir() throws SQLException, ClassNotFoundException,DAOException;
+	protected abstract void excluir() throws SQLException, ClassNotFoundException, DAOException;
 
 	protected abstract void carregarRegistro(String codigo) throws ClassNotFoundException, SQLException, DAOException;
 
-	class MouseHandler extends MouseAdapter {
-		public void mouseReleased(MouseEvent e) {
-			if (e.getButton() != MouseEvent.BUTTON1)
-				return;
-			JTable tb = (JTable) e.getSource();
-			if (tb.getSelectionModel().isSelectionEmpty())
-				return;
-			int lin = tb.getSelectionModel().getMinSelectionIndex();
-			String codigo = tb.getModel().getValueAt(lin, 0).toString();
-
-			try {
-				carregarRegistro(codigo);
-				tpAbas.setSelectedComponent(pnManutencao);
-				tfDesc.requestFocus();
-			} catch (Exception ex) {
-				showMessageDialog(IFCadastro.this, ex.getMessage(), "Erro", ERROR_MESSAGE);
-			}
-		}
-	}
 }

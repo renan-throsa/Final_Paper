@@ -3,7 +3,7 @@ package interfaces;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 
 public interface Downloadable {
 	

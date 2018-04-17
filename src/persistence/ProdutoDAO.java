@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import connection.ConexaoComercio;
 import transference.Produto;
 

@@ -8,7 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import persistence.CategoriaDAO;
 import persistence.ProdutoDAO;
 import transference.Categoria;

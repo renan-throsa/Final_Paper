@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
+@SuppressWarnings("serial")
 public class DesktopImagem extends JDesktopPane {
   private ImageIcon iiImagem;
   

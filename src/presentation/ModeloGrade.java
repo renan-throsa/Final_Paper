@@ -73,6 +73,7 @@ public class ModeloGrade extends AbstractTableModel {
 		return false;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Class getColumnClass(int coluna) {
 		return getValueAt(0, coluna).getClass();
 	}

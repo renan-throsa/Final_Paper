@@ -31,7 +31,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import persistence.ClienteDAO;
 import persistence.PedidoDAO;
 import persistence.ProdutoDAO;
@@ -58,6 +58,7 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 	protected JPanel pnSul;
 	protected JPanel pnAdicionar;
 
+	@SuppressWarnings("deprecation")
 	public IFPedidoRegistrar() throws ClassNotFoundException, SQLException, NullPointerException, DAOException {
 		setTitle("Registro de pedido");
 		setSize(500, 400);

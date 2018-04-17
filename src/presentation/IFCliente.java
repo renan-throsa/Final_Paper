@@ -2,11 +2,12 @@ package presentation;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.text.MaskFormatter;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import persistence.ClienteDAO;
 import transference.Cliente;
 

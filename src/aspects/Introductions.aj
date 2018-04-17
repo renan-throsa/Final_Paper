@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import javax.swing.JMenuItem;
 
+import aspects.Exceptions.DAOException;
 import connection.ConexaoComercio;
 import interfaces.Downloadable;
 import interfaces.Order;

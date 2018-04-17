@@ -11,6 +11,22 @@ import connection.ConexaoComercio;
 
 public aspect Exceptions {
 
+	// ----------------------------------------------------------------------------------------------------
+	// Class DAOException
+
+	public static final class DAOException extends Exception {
+
+		private static final long serialVersionUID = 1L;
+
+		public DAOException(String message) {
+			super(message);
+		}
+
+		public DAOException(String message, Throwable throwable) {
+			super(message, throwable);
+		}
+	}
+	// ----------------------------------------------------------------------------------------------------
 	// Methods exceptions
 
 	public pointcut DAOExceptions(): execution(* *.*(..)throws DAOException);
@@ -32,6 +48,8 @@ public aspect Exceptions {
 	public pointcut UOExceptions(): execution(* *.*(..)throws UnsupportedOperationException );
 
 	public pointcut IAExceptions(): execution(* *.*(..)throws IllegalArgumentException );
+
+	// ----------------------------------------------------------------------------------------------------
 
 	after() throwing (DAOException dex): DAOExceptions(){
 		JOptionPane.showMessageDialog(null, dex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -90,20 +108,19 @@ public aspect Exceptions {
 				JOptionPane.ERROR_MESSAGE);
 
 	}
-/*
-	Object around(ConexaoComercio connection) 
-	: call (public void ConexaoComercio.*(..) )
-	&& target(connection)
 
-	{
-		long startTime = System.nanoTime();
-		Object ret = proceed(connection);
-		System.out.println(
-				"Operation " + thisJoinPoint + " on " + connection + " took " + (System.nanoTime() - startTime));
-		return ret;
+	/*
+	 * Object around(ConexaoComercio connection) : call (public void
+	 * ConexaoComercio.*(..) ) && target(connection)
+	 * 
+	 * { long startTime = System.nanoTime(); Object ret = proceed(connection);
+	 * System.out.println( "Operation " + thisJoinPoint + " on " + connection +
+	 * " took " + (System.nanoTime() - startTime)); return ret;
+	 * 
+	 * }
+	 */
 
-	}
-*/
+	// ----------------------------------------------------------------------------------------------------
 	public pointcut CNFException(): initialization( public ConexaoComercio.new(..) throws ClassNotFoundException);
 
 	public pointcut SQLExceptionExeption(): initialization( public ConexaoComercio.new(..) throws SQLException);
@@ -114,7 +131,7 @@ public aspect Exceptions {
 	}
 
 	after() throwing (ClassNotFoundException cnfe): CNFException(){
-		JOptionPane.showMessageDialog(null,cnfe.getMessage(), "Driver não encontrado!", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, cnfe.getMessage(), "Driver não encontrado!", JOptionPane.ERROR_MESSAGE);
 
 	}
 

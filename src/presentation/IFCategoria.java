@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 
-import aspects.DAOException;
+import aspects.Exceptions.DAOException;
 import persistence.CategoriaDAO;
 import transference.Categoria;
 
