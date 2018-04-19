@@ -7,7 +7,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import aspects.Exceptions.DAOException;
-import interfaces.Connectable;
+import aspects.Implementations.Connectable;
 import transference.Categoria;
 import transference.Produto;
 
