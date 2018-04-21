@@ -26,11 +26,12 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.JTextComponent;
 
 import aspects.Exceptions.DAOException;
-import presentation.Handler.MouseHandler;
+import presentation.Auxiliary.MouseHandler;
 
 
 @SuppressWarnings("serial")
 public abstract class IFCadastro extends JInternalFrame implements ChangeListener, ActionListener {
+	
 	protected JTabbedPane tpAbas;
 	protected JTable tbDados;
 	protected JPanel pnManutencao;

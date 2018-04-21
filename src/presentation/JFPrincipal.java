@@ -15,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import aspects.Exceptions.DAOException;
+import presentation.Auxiliary.DesktopImagem;
 
 public class JFPrincipal extends JFrame implements ActionListener{
 

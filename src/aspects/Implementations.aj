@@ -5,9 +5,12 @@ import persistence.CategoriaDAO;
 import persistence.ClienteDAO;
 import persistence.ItemDAO;
 import persistence.ProdutoDAO;
+import presentation.IFPedidoRegistrar;
+import presentation.IFPedidoVer;
 
 public aspect Implementations {
-
+	// ----------------------------------------------------------------------------------------------------
+	// Implementations related with persistence layer.
 	public static interface Connectable {
 		public ConexaoComercio getConnection();
 	}
@@ -23,4 +26,13 @@ public aspect Implementations {
 	declare parents: ItemDAO implements Connectable;
 	declare parents: ProdutoDAO implements Connectable;
 
+	// ----------------------------------------------------------------------------------------------------
+	// Implementations related with presentation layer.
+	public static interface Exhibitable {
+
+	}
+
+	declare parents: IFPedidoRegistrar implements Exhibitable;
+	declare parents: IFPedidoVer implements Exhibitable;
+	
 }

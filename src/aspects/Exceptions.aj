@@ -7,7 +7,9 @@ import java.util.regex.PatternSyntaxException;
 
 import javax.swing.JOptionPane;
 
+import aspects.Implementations.Exhibitable;
 import connection.ConexaoComercio;
+import presentation.JFPrincipal;
 
 public aspect Exceptions {
 
@@ -26,57 +28,34 @@ public aspect Exceptions {
 			super(message, throwable);
 		}
 	}
+
 	// ----------------------------------------------------------------------------------------------------
 	// Methods exceptions
 
-	public pointcut DAOExceptions(): execution(* *.*(..)throws DAOException);
+	public pointcut DAOExceptions(): execution(private * JFPrincipal.*(..)throws DAOException);
 
-	public pointcut SQLFNSExceptions(): execution(* *.*(..)throws SQLFeatureNotSupportedException);
+	public pointcut SQLFNSExceptions(): execution(private * JFPrincipal.*(..)throws SQLFeatureNotSupportedException);
 
-	public pointcut NFEExceptions(): execution(* *.*(..)throws NumberFormatException);
+	public pointcut CCEExceptions(): execution(private * JFPrincipal.*(..)throws ClassCastException );
 
-	public pointcut PEExceptions(): execution(public * *.*(..)throws ParseException);
+	public pointcut CNFExceptions(): execution(private * JFPrincipal.*(..)throws ClassNotFoundException );
 
-	public pointcut PSEExceptions(): execution(* *.*(..)throws PatternSyntaxException);
+	public pointcut NPExceptions(): execution(private * JFPrincipal.*(..)throws NullPointerException);
 
-	public pointcut CCEExceptions(): execution(* *.*(..)throws ClassCastException );
+	public pointcut PEExceptions(): execution(private * JFPrincipal.*(..)throws ParseException);
+	
+	public pointcut NFEExceptions(): execution(* JFPrincipal.*(..)throws NumberFormatException);
 
-	public pointcut CNFExceptions(): execution(* *.*(..)throws ClassNotFoundException );
+	public pointcut PSEExceptions(): execution(* JFPrincipal.*(..)throws PatternSyntaxException);
 
-	public pointcut NPExceptions(): execution(* *.*(..)throws NullPointerException);
+	public pointcut UOExceptions(): execution(* JFPrincipal.*(..)throws UnsupportedOperationException );
 
-	public pointcut UOExceptions(): execution(* *.*(..)throws UnsupportedOperationException );
-
-	public pointcut IAExceptions(): execution(* *.*(..)throws IllegalArgumentException );
+	public pointcut IAExceptions(): execution(* JFPrincipal.*(..)throws IllegalArgumentException );
 
 	// ----------------------------------------------------------------------------------------------------
 
 	after() throwing (DAOException dex): DAOExceptions(){
 		JOptionPane.showMessageDialog(null, dex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-
-	}
-
-	after() throwing (SQLFeatureNotSupportedException ex): SQLFNSExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Caracteristica MySQL não suportada",
-				JOptionPane.ERROR_MESSAGE);
-
-	}
-
-	after() throwing (ParseException ex): PEExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Início da string não pode ser analisado.",
-				JOptionPane.ERROR_MESSAGE);
-
-	}
-
-	after() throwing (NumberFormatException ex): NFEExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "String não contém um número inteiro permissível.",
-				JOptionPane.ERROR_MESSAGE);
-
-	}
-
-	after() throwing (PatternSyntaxException ex): PSEExceptions(){
-		JOptionPane.showMessageDialog(null, ex.getMessage(), "Sintaxe da expressão regular é inválida",
-				JOptionPane.ERROR_MESSAGE);
 
 	}
 
@@ -96,6 +75,32 @@ public aspect Exceptions {
 				JOptionPane.ERROR_MESSAGE);
 
 	}
+
+	after() throwing (ParseException ex): PEExceptions(){
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "Início da string não pode ser analisado.",
+				JOptionPane.ERROR_MESSAGE);
+
+	}
+
+	after() throwing (SQLFeatureNotSupportedException ex): SQLFNSExceptions(){
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "Caracteristica MySQL não suportada",
+				JOptionPane.ERROR_MESSAGE);
+
+	}
+
+	
+	after() throwing (NumberFormatException ex): NFEExceptions(){
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "String não contém um número inteiro permissível.",
+				JOptionPane.ERROR_MESSAGE);
+
+	}
+
+	after() throwing (PatternSyntaxException ex): PSEExceptions(){
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "Sintaxe da expressão regular é inválida",
+				JOptionPane.ERROR_MESSAGE);
+
+	}
+
 
 	after() throwing (UnsupportedOperationException ex): UOExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Operação de remoção não é suportada",
