@@ -5,9 +5,6 @@ import persistence.CategoriaDAO;
 import persistence.ClienteDAO;
 import persistence.ItemDAO;
 import persistence.ProdutoDAO;
-import presentation.IFCadastro;
-import presentation.IFPedidoRegistrar;
-import presentation.IFPedidoVer;
 
 public aspect Implementations {
 	// ----------------------------------------------------------------------------------------------------
@@ -29,11 +26,5 @@ public aspect Implementations {
 
 	// ----------------------------------------------------------------------------------------------------
 	// Implementations related with presentation layer.
-	public static interface Exhibitable {
 
-	}
-
-	declare parents: IFPedidoRegistrar implements Exhibitable;
-	declare parents: IFPedidoVer implements Exhibitable;
-	declare parents: IFCadastro implements Exhibitable;
 }

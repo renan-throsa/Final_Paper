@@ -16,9 +16,6 @@ public aspect Exceptions {
 
 	public static final class DAOException extends Exception {
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1395458548657103955L;
 
 		public DAOException(String message) {
@@ -94,7 +91,7 @@ public aspect Exceptions {
 
 	}
 
-	public pointcut UOExceptions(): call(* JInternalFrame+.*(..)throws UnsupportedOperationException );
+	public pointcut UOExceptions(): execution(* JInternalFrame+.*(..)throws UnsupportedOperationException );
 
 	after() throwing (UnsupportedOperationException ex): UOExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Operação de remoção não é suportada",
@@ -102,7 +99,6 @@ public aspect Exceptions {
 
 	}
 
-	
 	public pointcut IAExceptions(): execution(* JInternalFrame+.*(..)throws IllegalArgumentException );
 
 	after() throwing (IllegalArgumentException ex): IAExceptions(){
@@ -112,4 +108,22 @@ public aspect Exceptions {
 	}
 
 	// ----------------------------------------------------------------------------------------------------
+	// Checked Exceptions.
+
+	public pointcut CKDExceptions(): execution(public void JFPrincipal.actionPerformed(..));
+
+	declare soft : Exception : CKDExceptions();
+
+	public pointcut UNCKDExceptions(): execution(public void JFPrincipal.actionPerformed(..));
+
+	void around() : UNCKDExceptions(){
+		try {
+			proceed();
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage(), "UNCKDExceptions at actionPerformed()",
+					JOptionPane.ERROR_MESSAGE);
+
+		}
+	}
+
 }
