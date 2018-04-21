@@ -5,6 +5,7 @@ import persistence.CategoriaDAO;
 import persistence.ClienteDAO;
 import persistence.ItemDAO;
 import persistence.ProdutoDAO;
+import presentation.IFCadastro;
 import presentation.IFPedidoRegistrar;
 import presentation.IFPedidoVer;
 
@@ -34,5 +35,5 @@ public aspect Implementations {
 
 	declare parents: IFPedidoRegistrar implements Exhibitable;
 	declare parents: IFPedidoVer implements Exhibitable;
-	
+	declare parents: IFCadastro implements Exhibitable;
 }

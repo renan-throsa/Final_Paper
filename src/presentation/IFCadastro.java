@@ -28,10 +28,9 @@ import javax.swing.text.JTextComponent;
 import aspects.Exceptions.DAOException;
 import presentation.Auxiliary.MouseHandler;
 
-
 @SuppressWarnings("serial")
 public abstract class IFCadastro extends JInternalFrame implements ChangeListener, ActionListener {
-	
+
 	protected JTabbedPane tpAbas;
 	protected JTable tbDados;
 	protected JPanel pnManutencao;
@@ -43,8 +42,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 	protected JButton btIncluir;
 	protected JButton btAlterar;
 	protected JButton btExcluir;
-	
-	
+
 	@SuppressWarnings("deprecation")
 	public IFCadastro(String titulo, int largura, int campos)
 			throws ClassNotFoundException, SQLException, DAOException {
@@ -64,7 +62,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 		tfCodigo = new JFormattedTextField(new Integer(0));
 		tfCodigo.setEnabled(false);
 		tfDesc = new JTextField();
-		
+
 		btIncluir = new JButton("Incluir");
 		btAlterar = new JButton("Alterar");
 		btExcluir = new JButton("Excluir");
@@ -106,7 +104,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 		getContentPane().add(tpAbas, BorderLayout.CENTER);
 
 		tpAbas.addChangeListener(this);
-		tbDados.addMouseListener( new MouseHandler(this));
+		tbDados.addMouseListener(new MouseHandler(this));
 		btIncluir.addActionListener(this);
 		btAlterar.addActionListener(this);
 		btExcluir.addActionListener(this);
@@ -152,8 +150,8 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 
 	protected abstract void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException;
 
-	protected abstract void incluir()
-			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException;
+	protected abstract void incluir() throws NumberFormatException, ParseException, SQLFeatureNotSupportedException,
+			SQLException, ClassNotFoundException, DAOException;
 
 	protected abstract void alterar()
 			throws ParseException, SQLFeatureNotSupportedException, SQLException, ClassNotFoundException, DAOException;

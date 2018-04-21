@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -191,7 +190,7 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 		}
 	}
 
-	public void exibirPreco() throws SQLException, ClassNotFoundException, DAOException {
+	public void exibirPreco() throws SQLException, ClassNotFoundException, DAOException,IllegalArgumentException {
 		Produto p = (Produto) coProduto.getSelectedItem();
 
 		p = new ProdutoDAO().pesquisar(p.getCodigo());
@@ -199,7 +198,7 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 
 	}
 
-	public void addItem() {
+	public void addItem() throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException{
 		int qtde = Integer.parseInt(tfQuantidade.getText());
 		String str = tfUnitario.getText().replaceAll("\\.", "");
 		double unitario = Double.parseDouble(str.replace(",", "."));
@@ -242,7 +241,7 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 		SwingUtilities.updateComponentTreeUI(tbDados);
 	}
 
-	public void gravarPedido() throws SQLFeatureNotSupportedException, SQLException, NullPointerException, Exception {
+	public void gravarPedido() throws ClassNotFoundException, Exception {
 		Pedido p = new Pedido();
 		Cliente c = (Cliente) coCliente.getSelectedItem();
 		p.setIdCliente(c.getCodigo());

@@ -83,7 +83,7 @@ public class Pedido {
 			itens.add(item);
 	}
 
-	public void excluirItem(Item item) throws ClassCastException, UnsupportedOperationException, NullPointerException {
+	public void excluirItem(Item item) throws ClassCastException, NullPointerException {
 		if (item == null)
 			return;
 		if (itens.contains(item))

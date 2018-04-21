@@ -1,7 +1,9 @@
 package presentation;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.regex.PatternSyntaxException;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -12,7 +14,7 @@ import persistence.ClienteDAO;
 import transference.Cliente;
 
 public class IFCliente extends IFCadastro {
-	
+
 	private static final long serialVersionUID = 1L;
 	private JFormattedTextField tfCpf;
 	private JFormattedTextField tfNascimento;
@@ -35,7 +37,8 @@ public class IFCliente extends IFCadastro {
 		pnCampos.add(tfNascimento);
 	}
 
-	public void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException {
+	@Override
+	protected void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException {
 
 		ResultSet rs = new ClienteDAO().carregarGrade();
 		tbDados.setModel(new ModeloGrade(rs, new String[] { "Código", "Nome" }));
@@ -43,7 +46,8 @@ public class IFCliente extends IFCadastro {
 
 	}
 
-	public void incluir() throws ParseException, ClassNotFoundException, SQLException,DAOException {
+	@Override
+	protected void incluir() throws ParseException,PatternSyntaxException,ClassNotFoundException, SQLException, DAOException {
 		Cliente c = new Cliente();
 		c.setNome(tfDesc.getText());
 		c.setCpf(tfCpf.getText());
@@ -54,7 +58,8 @@ public class IFCliente extends IFCadastro {
 
 	}
 
-	public void alterar() throws SQLException, ParseException, ClassNotFoundException, DAOException {
+	@Override
+	protected void alterar() throws SQLException, ParseException,NumberFormatException,ClassNotFoundException, DAOException {
 		Cliente c = new Cliente();
 		c.setCodigo(tfCodigo.getText());
 		c.setNome(tfDesc.getText());
@@ -66,15 +71,6 @@ public class IFCliente extends IFCadastro {
 
 	}
 
-	public void excluir() throws NumberFormatException, SQLException, ClassNotFoundException, DAOException {
-
-		new ClienteDAO().excluir(Integer.parseInt(tfCodigo.getText()));
-		ModeloGrade dtm = (ModeloGrade) tbDados.getModel();
-		dtm.removeRow(tbDados.getSelectedRow());
-		tpAbas.setSelectedIndex(0);
-
-	}
-
 	protected void carregarRegistro(String codigo) throws SQLException, NumberFormatException, ClassNotFoundException {
 		Cliente c = new ClienteDAO().pesquisar(codigo);
 		tfCodigo.setText(String.valueOf(c.getCodigo()));
@@ -82,4 +78,14 @@ public class IFCliente extends IFCadastro {
 		tfCpf.setText(c.getCpf());
 		tfNascimento.setText(c.getNascimentoFmt());
 	}
+
+	@Override
+	protected void excluir() throws NumberFormatException, SQLException, ClassNotFoundException, DAOException {
+		new ClienteDAO().excluir(Integer.parseInt(tfCodigo.getText()));
+		ModeloGrade dtm = (ModeloGrade) tbDados.getModel();
+		dtm.removeRow(tbDados.getSelectedRow());
+		tpAbas.setSelectedIndex(0);
+
+	}
+
 }
