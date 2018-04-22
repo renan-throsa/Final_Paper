@@ -40,7 +40,7 @@ import transference.Pedido;
 import transference.Produto;
 
 public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, DocumentListener, ActionListener {
-	
+
 	private static final long serialVersionUID = 1L;
 	protected JComboBox<Cliente> coCliente;
 	protected JComboBox<Produto> coProduto;
@@ -141,12 +141,8 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getSource() == coProduto)
-			try {
-				exibirPreco();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			exibirPreco();
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -155,12 +151,8 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 		else if (e.getSource() == btLimpar)
 			limparItens();
 		else if (e.getSource() == btGravar)
-			try {
-				gravarPedido();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			gravarPedido();
+
 	}
 
 	public void insertUpdate(DocumentEvent e) {
@@ -172,25 +164,21 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 	}
 
 	public void changedUpdate(DocumentEvent e) {
-		try {
-			if (tfQuantidade.getText().length() == 0)
-				return;
-			int qtde = Integer.parseInt(tfQuantidade.getText());
+		if (tfQuantidade.getText().length() == 0)
+			return;
+		int qtde = Integer.parseInt(tfQuantidade.getText());
 
-			String str = tfUnitario.getText();
-			str = str.replaceAll("\\.", "").replace(",", ".");
-			if (str.length() == 0)
-				return;
-			double unitario = Double.parseDouble(str);
+		String str = tfUnitario.getText();
+		str = str.replaceAll("\\.", "").replace(",", ".");
+		if (str.length() == 0)
+			return;
+		double unitario = Double.parseDouble(str);
 
-			NumberFormat nf = NumberFormat.getCurrencyInstance();
-			lbTotal.setText(nf.format(qtde * unitario));
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		NumberFormat nf = NumberFormat.getCurrencyInstance();
+		lbTotal.setText(nf.format(qtde * unitario));
 	}
 
-	public void exibirPreco() throws SQLException, ClassNotFoundException, DAOException,IllegalArgumentException {
+	public void exibirPreco() throws SQLException, ClassNotFoundException, DAOException, IllegalArgumentException {
 		Produto p = (Produto) coProduto.getSelectedItem();
 
 		p = new ProdutoDAO().pesquisar(p.getCodigo());
@@ -198,7 +186,8 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 
 	}
 
-	public void addItem() throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException{
+	public void addItem()
+			throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException {
 		int qtde = Integer.parseInt(tfQuantidade.getText());
 		String str = tfUnitario.getText().replaceAll("\\.", "");
 		double unitario = Double.parseDouble(str.replace(",", "."));

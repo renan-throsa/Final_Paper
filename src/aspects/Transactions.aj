@@ -14,7 +14,7 @@ import transference.Produto;
 public aspect Transactions {
 
 	public pointcut transactionOperation(Connectable dao)
-		: (call( public void Connectable+.*(..) throws SQLException ) 
+		: (execution( public void Connectable+.*(..) throws SQLException ) 
 			||execution( public Vector Connectable+.*(..) throws SQLException )
 				||execution( public Categoria Connectable+.*(..) throws SQLException )
 					||execution( public Produto Connectable+.*(..) throws SQLException ))
@@ -33,9 +33,9 @@ public aspect Transactions {
 			try {
 				if (dao.getConnection() != null)
 					dao.getConnection().cancelarTransacao();
-				throw new DAOException("Erro na operação " + method, e);
+				throw new DAOException("Erro, operação " + method, e);
 			} catch (SQLException e1) {
-				throw new DAOException("Erro no operação " + method + " e rollback.", e1);
+				throw new DAOException("Erro, operação " + method + " e rollback.", e1);
 			}
 
 		}finally {

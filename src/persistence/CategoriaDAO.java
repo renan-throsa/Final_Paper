@@ -18,7 +18,7 @@ public class CategoriaDAO {
 		cc = new ConexaoComercio();
 	}
 
-	public void incluir(Categoria c) throws SQLException, SQLFeatureNotSupportedException,DAOException {
+	public void incluir(Categoria c) throws SQLException, SQLFeatureNotSupportedException, DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("INSERT INTO CATEGORIA (DESCRICAO) VALUES(?)",
 				Statement.RETURN_GENERATED_KEYS);
 		pst.setString(1, c.getDescricao());
@@ -29,10 +29,10 @@ public class CategoriaDAO {
 			c.setCodigo(rs.getInt(1));
 		rs.close();
 		pst.close();
-	
+
 	}
 
-	public void alterar(Categoria c) throws SQLException, SQLFeatureNotSupportedException,DAOException {
+	public void alterar(Categoria c) throws SQLException, SQLFeatureNotSupportedException, DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("UPDATE CATEGORIA SET DESCRICAO = ? WHERE CODIGO = ?");
 		pst.setString(1, c.getDescricao());
 		pst.setInt(2, c.getCodigo());
@@ -42,7 +42,7 @@ public class CategoriaDAO {
 
 	}
 
-	public void excluir(int codigo) throws SQLException,DAOException {
+	public void excluir(int codigo) throws SQLException, DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("DELETE FROM CATEGORIA WHERE CODIGO = ?");
 		pst.setInt(1, codigo);
 		pst.executeUpdate();
@@ -50,12 +50,12 @@ public class CategoriaDAO {
 		cc.confirmarTransacao();
 	}
 
-	public ResultSet carregarGrade() throws SQLException,DAOException {
+	public ResultSet carregarGrade() throws SQLException, DAOException {
 		Statement stm = cc.getConexao().createStatement();
 		return stm.executeQuery("SELECT * FROM CATEGORIA ORDER BY DESCRICAO");
 	}
 
-	public Vector<Categoria> carregarCombo() throws SQLException,DAOException {
+	public Vector<Categoria> carregarCombo() throws SQLException, DAOException {
 		Statement stm = cc.getConexao().createStatement();
 		ResultSet rs = stm.executeQuery("SELECT * FROM CATEGORIA ORDER BY DESCRICAO");
 		Vector<Categoria> v = new Vector<Categoria>();
@@ -64,7 +64,7 @@ public class CategoriaDAO {
 		return v;
 	}
 
-	public Categoria pesquisar(int codigo) throws SQLException,DAOException {
+	public Categoria pesquisar(int codigo) throws SQLException, DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement("SELECT * FROM CATEGORIA WHERE CODIGO = ?");
 		pst.setInt(1, codigo);
 		ResultSet rs = pst.executeQuery();
@@ -73,7 +73,7 @@ public class CategoriaDAO {
 		return new Categoria(rs.getInt("CODIGO"), rs.getString("DESCRICAO"));
 	}
 
-	public Categoria pesquisar(String codigo) throws SQLException,DAOException {
+	public Categoria pesquisar(String codigo) throws SQLException, DAOException {
 		return pesquisar(Integer.parseInt(codigo));
 	}
 }

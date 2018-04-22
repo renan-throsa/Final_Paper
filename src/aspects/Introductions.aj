@@ -38,5 +38,6 @@ public JMenuItem JFPrincipal.miVer = new JMenuItem("Ver");
 		return pst.executeQuery();
 	}
 	
+	declare precedence :  Transactions,Exceptions ;
 	
 }
