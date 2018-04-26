@@ -8,13 +8,13 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.text.ParseException;
 import java.util.regex.PatternSyntaxException;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import presentation.IFCliente;
-import presentation.JFPrincipal;
 
 public aspect Exceptions {
 
@@ -39,25 +39,25 @@ public aspect Exceptions {
 	public pointcut DAOExceptions(): execution(* JInternalFrame+.*(..)throws DAOException);
 
 	after() throwing (DAOException dex): DAOExceptions(){
-		
-		JOptionPane.showMessageDialog(null, dex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+
+		JOptionPane.showMessageDialog(null, dex.getMessage(), "DAOException", JOptionPane.ERROR_MESSAGE);
 	}
 
-	public pointcut CCEExceptions(): execution(private * JFPrincipal.*(..)throws ClassCastException );
+	public pointcut CCEExceptions(): execution(private * JFrame+.*(..)throws ClassCastException );
 
 	after() throwing (ClassCastException ex): CNFExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Tipo do elemento especificado incompatível",
 				JOptionPane.ERROR_MESSAGE);
 	}
 
-	public pointcut CNFExceptions(): execution(* JFPrincipal.*(..)throws ClassNotFoundException );
+	public pointcut CNFExceptions(): execution(* JFrame+.*(..)throws ClassNotFoundException );
 
 	after() throwing (ClassNotFoundException ex): CNFExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Driver não encontrado!", JOptionPane.ERROR_MESSAGE);
 
 	}
 
-	public pointcut NPExceptions(): execution(* JFPrincipal.*(..)throws NullPointerException);
+	public pointcut NPExceptions(): execution(* JFrame+.*(..)throws NullPointerException);
 
 	after() throwing (NullPointerException ex): NPExceptions(){
 		JOptionPane.showMessageDialog(null, thisJoinPoint.getSignature(), "Elemento especificado nulo",

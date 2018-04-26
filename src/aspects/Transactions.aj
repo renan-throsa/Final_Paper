@@ -13,16 +13,26 @@ import transference.Produto;
 
 public aspect Transactions {
 
+	pointcut pointcutA():execution(public void Connectable+.*(..) throws SQLException);
+
+	pointcut pointcutB():execution(public Vector Connectable+.*(..) throws SQLException);
+
+	pointcut pointcutC():execution(public Categoria Connectable+.*(..) throws SQLException);
+
+	pointcut pointcutD():execution(public Produto Connectable+.*(..) throws SQLException);
+
 	public pointcut transactionOperation(Connectable dao)
-		: (execution( public void Connectable+.*(..) throws SQLException ) 
-			||execution( public Vector Connectable+.*(..) throws SQLException )
-				||execution( public Categoria Connectable+.*(..) throws SQLException )
-					||execution( public Produto Connectable+.*(..) throws SQLException ))
-					&& target(dao);
+	: (pointcutA() 
+		||pointcutB()
+			||pointcutC()
+				||pointcutD())
+				&& target(dao);
 
 	Object around(Connectable dao) throws DAOException: transactionOperation(dao) {
 		String method = thisJoinPoint.getSignature().getName();
-		try {
+		try
+
+		{
 			Object ret = proceed(dao);
 
 			if (shouldShow(method)) {
@@ -38,12 +48,11 @@ public aspect Transactions {
 				throw new DAOException("Erro, operação " + method + " e rollback.", e1);
 			}
 
-		}finally {
+		} finally {
 			try {
 				if (dao.getConnection() != null)
 					dao.getConnection().fechar();
 				if (shouldShow(method)) {
-
 					JOptionPane.showMessageDialog(null, "Conexão fechada com sucesso!", "Mensagem",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -62,7 +71,9 @@ public aspect Transactions {
 		try {
 			Object ret = proceed(dao);
 			return ret;
-		} catch (SQLException e) {
+		} catch (
+
+		SQLException e) {
 			try {
 				if (dao.getConnection() != null)
 					dao.getConnection().fechar();

@@ -126,26 +126,12 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btIncluir)
-			try {
-				incluir();
-			} catch (Exception ex) {
-				// TODO Auto-generated catch block
-				ex.printStackTrace();
-			}
+			incluir();
 		else if (e.getSource() == btAlterar)
-			try {
-				alterar();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			alterar();
 		else if (e.getSource() == btExcluir)
-			try {
-				excluir();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			excluir();
+
 	}
 
 	protected abstract void atualizarGrade() throws ClassNotFoundException, SQLException, DAOException;
