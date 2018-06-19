@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.Statement;
+import java.util.Date;
 
 import aspects.Exceptions.DAOException;
 import connection.ConexaoComercio;
@@ -18,11 +19,8 @@ public class PedidoDAO {
 		cc = new ConexaoComercio();
 	}
 
-	public ConexaoComercio getConnection() {
-		return cc;
-	}
-	
-	public void incluir(Pedido p) throws SQLException,SQLFeatureNotSupportedException, ClassNotFoundException, DAOException {
+	public void incluir(Pedido p)
+			throws SQLException, SQLFeatureNotSupportedException, ClassNotFoundException, DAOException {
 		PreparedStatement pst = cc.getConexao().prepareStatement(
 				"INSERT INTO PEDIDO(DATA,HORARIO,ID_CLIENTE,STATUS) " + "VALUES(?,?,?,?)",
 				Statement.RETURN_GENERATED_KEYS);
@@ -42,12 +40,19 @@ public class PedidoDAO {
 			i.setIdPedido(p.getNumero());
 			new ItemDAO().incluir(i);
 		}
-		
-		
+
 		cc.confirmarTransacao();
 	}
-	
-	
-	
-	
+
+	public Pedido pesquisar(int codigo) throws SQLException, DAOException {
+		PreparedStatement pst = cc.getConexao().prepareStatement("SELECT * FROM PEDIDO WHERE CODIGO = ?");
+		pst.setInt(1, codigo);
+		ResultSet rs = pst.executeQuery();
+		if (!rs.next())
+			return null;
+
+		return new Pedido(rs.getInt("NUMERO"), rs.getDate("DATA"), rs.getTime("HORARIO"), rs.getInt("IDCLIENTE"),
+				rs.getString("STATUS").charAt(0));
+	}
+
 }

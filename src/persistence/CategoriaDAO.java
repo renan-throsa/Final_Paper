@@ -27,6 +27,7 @@ public class CategoriaDAO {
 		ResultSet rs = pst.getGeneratedKeys();
 		if (rs.next())
 			c.setCodigo(rs.getInt(1));
+			
 		rs.close();
 		pst.close();
 

@@ -12,7 +12,7 @@ import transference.Categoria;
 import transference.Produto;
 
 public aspect Transactions {
-
+/*
 	pointcut pointcutA():execution(public void Connectable+.*(..) throws SQLException);
 
 	pointcut pointcutB():execution(public Vector Connectable+.*(..) throws SQLException);
@@ -95,5 +95,5 @@ public aspect Transactions {
 				JOptionPane.INFORMATION_MESSAGE);
 
 	}
-
+*/
 }

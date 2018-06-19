@@ -54,7 +54,7 @@ public class JFPrincipal extends JFrame implements ActionListener {
 		miProduto.setMnemonic('P');
 		miCliente.setMnemonic('C');
 		miRegistrar.setMnemonic('R');
-		miVer.setMnemonic('V');
+
 		miSobre.setMnemonic('o');
 
 		setJMenuBar(mbBarra);
@@ -65,7 +65,6 @@ public class JFPrincipal extends JFrame implements ActionListener {
 		meCadastro.add(miProduto);
 		meCadastro.add(miCliente);
 		mePedido.add(miRegistrar);
-		mePedido.add(miVer);
 		meSistema.add(miSobre);
 
 		desktop = new DesktopImagem(getClass().getResource("abstract1.jpg").getPath());
@@ -78,7 +77,6 @@ public class JFPrincipal extends JFrame implements ActionListener {
 		miProduto.addActionListener(this);
 		miRegistrar.addActionListener(this);
 		miSobre.addActionListener(this);
-		miVer.addActionListener(this);
 
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((d.width - getWidth()) / 2, (d.height - getHeight()) / 2);
@@ -94,9 +92,7 @@ public class JFPrincipal extends JFrame implements ActionListener {
 			cadastrarCliente();
 		else if (source == miRegistrar)
 			registrarPedido();
-		else if (source == miVer) {
-			verPedido();
-		} else if (source == miSobre)
+		else if (source == miSobre)
 			sobre();
 	}
 

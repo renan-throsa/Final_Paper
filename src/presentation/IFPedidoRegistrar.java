@@ -57,7 +57,6 @@ public class IFPedidoRegistrar extends JInternalFrame implements ItemListener, D
 	protected JPanel pnSul;
 	protected JPanel pnAdicionar;
 
-	@SuppressWarnings("deprecation")
 	public IFPedidoRegistrar() throws ClassNotFoundException, SQLException, NullPointerException, DAOException {
 		setTitle("Registro de pedido");
 		setSize(500, 400);

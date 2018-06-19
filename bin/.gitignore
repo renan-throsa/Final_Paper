@@ -8,3 +8,10 @@
 /interfaces/
 /IFPedidoVer.class
 /IFProduto.class
+/test/
+/incluir_Categoria.class
+/testes_Categoria/
+/testes_Produto/
+/testes_Cliente/
+/testes_Item/
+/testes_Pedido/

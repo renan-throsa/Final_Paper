@@ -43,7 +43,7 @@ public abstract class IFCadastro extends JInternalFrame implements ChangeListene
 	protected JButton btAlterar;
 	protected JButton btExcluir;
 
-	@SuppressWarnings("deprecation")
+	
 	public IFCadastro(String titulo, int largura, int campos)
 			throws ClassNotFoundException, SQLException, DAOException {
 		setTitle(titulo);

@@ -17,14 +17,10 @@ public class ProdutoDAO {
 		cc = new ConexaoComercio();
 	}
 
-	public ConexaoComercio getConnection() {
-		return cc;
-	}
-
 	public void incluir(Produto c) throws SQLException, DAOException {
 
 		PreparedStatement pst = cc.getConexao().prepareStatement(
-				"INSERT INTO PRODUTO (DESCRICAO,PRECO,ID_CATEGORIA) " + "VALUES(?,?,?)",
+				"INSERT INTO PRODUTO (DESCRICAO,PRECO,ID_CATEGORIa) " + "VALUES(?,?,?)",
 				Statement.RETURN_GENERATED_KEYS);
 		pst.setString(1, c.getDescricao());
 		pst.setDouble(2, c.getPreco());

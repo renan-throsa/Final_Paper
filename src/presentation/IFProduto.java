@@ -20,7 +20,6 @@ public class IFProduto extends IFCadastro {
 	private JFormattedTextField tfPreco;
 	private JComboBox<Categoria> coCategoria;
 
-	@SuppressWarnings("deprecation")
 	public IFProduto() throws SQLException, ClassNotFoundException,DAOException {
 		super("Cadastro de produtos", 300, 4);
 

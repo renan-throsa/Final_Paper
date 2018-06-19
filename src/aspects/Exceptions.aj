@@ -15,6 +15,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import presentation.IFCliente;
+import presentation.JFPrincipal;
 
 public aspect Exceptions {
 
@@ -36,7 +37,7 @@ public aspect Exceptions {
 
 	// ----------------------------------------------------------------------------------------------------
 	// Class principal
-	public pointcut DAOExceptions(): execution(* JInternalFrame+.*(..)throws DAOException);
+	public pointcut DAOExceptions(): execution(* JFPrincipal.*(..)throws DAOException);
 
 	after() throwing (DAOException dex): DAOExceptions(){
 
@@ -50,7 +51,7 @@ public aspect Exceptions {
 				JOptionPane.ERROR_MESSAGE);
 	}
 
-	public pointcut CNFExceptions(): execution(* JFrame+.*(..)throws ClassNotFoundException );
+	public pointcut CNFExceptions(): execution(* JInternalFrame+.*(..)throws ClassNotFoundException );
 
 	after() throwing (ClassNotFoundException ex): CNFExceptions(){
 		JOptionPane.showMessageDialog(null, ex.getMessage(), "Driver não encontrado!", JOptionPane.ERROR_MESSAGE);
