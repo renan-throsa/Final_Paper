@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.sql.Statement;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-
 import aspects.Exceptions.DAOException;
 import connection.ConexaoComercio;
 import transference.Item;
@@ -43,6 +41,7 @@ public class PedidoDAO {
 		}
 
 		cc.confirmarTransacao();
+		
 	}
 
 	public Pedido pesquisar(int codigo) throws SQLException, DAOException {
@@ -52,10 +51,10 @@ public class PedidoDAO {
 		if (!rs.next())
 			return null;
 
-		Pedido p = new Pedido(rs.getInt("NUMERO"), rs.getDate("DATA"), rs.getTime("HORARIO"), rs.getInt("ID_CLIENTE"),
+		return new Pedido(rs.getInt("NUMERO"), rs.getDate("DATA"), rs.getTime("HORARIO"), rs.getInt("ID_CLIENTE"),
 				rs.getString("STATUS").charAt(0));
 
-		return p;
+
 	}
 
 	public Pedido pesquisar(String codigo) throws SQLException, DAOException {

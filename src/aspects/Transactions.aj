@@ -21,9 +21,50 @@ public aspect Transactions {
 
 	pointcut pointcutD():execution(public Produto Connectable+.*(..) throws SQLException);
 
+	pointcut pointcutE():execution( public ResultSet Connectable+.*(..) throws SQLException);
+
+	public pointcut inclusionOperation(Connectable dao)
+	: pointcutA() && target(dao);
+
+	void around(Connectable dao) throws DAOException, MySQLIntegrityConstraintViolationException: inclusionOperation(dao) {
+		String method = thisJoinPoint.getSignature().getName();
+		try
+
+		{
+			proceed(dao);
+
+			if (shouldShow(method)) {
+				showMessage(method);
+			}
+
+		} catch (SQLException e) {
+			try {
+				if (dao.getConnection() != null)
+					dao.getConnection().cancelarTransacao();
+				throw new DAOException("Erro, operação " + method, e);
+			} catch (SQLException e1) {
+				throw new DAOException("Erro, operação " + method + " e rollback.", e1);
+			}
+
+		} /*finally {
+			try {
+				if (dao.getConnection() != null)
+					dao.getConnection().fechar();
+				dao.getConnection().fechar();
+				if (shouldShow(method)) {
+					// JOptionPane.showMessageDialog(null, "Conexão fechada com sucesso!",
+					// "Mensagem",JOptionPane.INFORMATION_MESSAGE);
+					System.out.println("Mensagem - Conexão fechada com sucesso!");
+				}
+			} catch (SQLException e2) {
+				throw new DAOException("Erro ao fechar a conexão.", e2);
+			}
+		}
+*/
+	}
+
 	public pointcut transactionOperation(Connectable dao)
-	: (pointcutA() 
-		||pointcutB()
+	: (pointcutB()
 			||pointcutC()
 				||pointcutD())
 				&& target(dao);
@@ -65,8 +106,7 @@ public aspect Transactions {
 	}
 
 	public pointcut queryOperation(Connectable dao)
-	: execution( public ResultSet Connectable+.*(..) throws SQLException ) 
-			&& target(dao);
+	:  pointcutE() && target(dao);
 
 	Object around(Connectable dao) throws DAOException: queryOperation(dao) {
 		try {
