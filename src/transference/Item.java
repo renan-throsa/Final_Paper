@@ -1,89 +1,90 @@
 package transference;
 
 public class Item {
-  private int idPedido;
-  private int idProduto;
-  private int quantidade;
-  private double unitario;
-  
-  public Item() {
-    this(0,0,0,0);
-  }
-  
-  public Item(int idPedido, int idProduto, int quantidade,
-    double unitario) {
-    setIdProduto(idProduto);
-    setQuantidade(quantidade);
-    setUnitario(unitario);
-  }
+	private int idPedido;
+	private int idProduto;
+	private int quantidade;
+	private double unitario;
 
-  public int getIdPedido() {
-    return idPedido;
-  }
+	public Item() {
+		this(0, 0, 0, 0);
+	}
 
-  public int getIdProduto() {
-    return idProduto;
-  }
+	public Item(int idPedido, int idProduto, int quantidade, double unitario) {
+		setIdPedido(idPedido);
+		setIdProduto(idProduto);
+		setQuantidade(quantidade);
+		setUnitario(unitario);
+	}
 
-  public int getQuantidade() {
-    return quantidade;
-  }
+	public int getIdPedido() {
+		return idPedido;
+	}
 
-  public double getUnitario() {
-    return unitario;
-  }
+	public int getIdProduto() {
+		return idProduto;
+	}
 
-  public void setIdPedido(int idPedido) {
-    this.idPedido = idPedido;
-  }
+	public int getQuantidade() {
+		return quantidade;
+	}
 
-  public void setIdPedido(String idPedido) throws NumberFormatException{
-    this.idPedido = Integer.parseInt(idPedido);
-  }
+	public double getUnitario() {
+		return unitario;
+	}
 
-  public void setIdProduto(int idProduto) {
-    this.idProduto = idProduto;
-  }
+	public void setIdPedido(int idPedido) {
+		this.idPedido = idPedido;
+	}
 
-  public void setIdProduto(String idProduto) throws NumberFormatException{
-    this.idProduto = Integer.parseInt(idProduto);
-  }
+	public void setIdPedido(String idPedido) throws NumberFormatException {
+		this.idPedido = Integer.parseInt(idPedido);
+	}
 
-  public void setQuantidade(int quantidade) {
-    this.quantidade = quantidade;
-  }
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
 
-  public void setQuantidade(String quantidade)throws NumberFormatException {
-    this.quantidade = Integer.parseInt(quantidade);
-  }
+	public void setIdProduto(String idProduto) throws NumberFormatException {
+		this.idProduto = Integer.parseInt(idProduto);
+	}
 
-  public void setUnitario(double unitario) {
-    this.unitario = unitario;
-  }
-  
-  public void setUnitario(String unitario) {
-    this.unitario = Double.parseDouble(unitario);
-  }
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 
-  public boolean equals(Object obj) {
-    if (obj == null || getClass() != obj.getClass()) return false;
-    if (this == obj) return true;
-    final Item outro = (Item)obj;
-    if (idProduto == outro.idProduto) return true;
-    else return false;
-  }
-  
-  public int hashCode() {
-    return 31 + idProduto;
-  }
+	public void setQuantidade(String quantidade) throws NumberFormatException {
+		this.quantidade = Integer.parseInt(quantidade);
+	}
+
+	public void setUnitario(double unitario) {
+		this.unitario = unitario;
+	}
+
+	public void setUnitario(String unitario) {
+		this.unitario = Double.parseDouble(unitario);
+	}
+
+	public boolean equals(Object obj) {
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		if (this == obj)
+			return true;
+		final Item outro = (Item) obj;
+		if (idProduto == outro.idProduto)
+			return true;
+		else
+			return false;
+	}
+
+	public int hashCode() {
+		return 31 + idProduto;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [idPedido=" + idPedido + ", idProduto=" + idProduto + ", quantidade=" + quantidade + ", unitario="
+				+ unitario + "]";
+	}
+
 }
-
-/********************************************************************
- * Este arquivo é parte integrante do livro identificado abaixo e é *
- * protegido pela legislação que trata dos direitos autorais.       *
- *                                                                  *
- * Título:  Programação de Computadores em Java                     *
- * Autor:   Rui Rossi dos Santos                                    *
- * Editora: NovaTerra Editora e Distribuidora Ltda.                 *
- * Ano:     2014                                                    *
- ********************************************************************/

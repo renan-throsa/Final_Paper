@@ -1,11 +1,11 @@
-package testes_Cliente;
+package testes_Item;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ Incluir_Cliente.class, Busca_Cliente.class,Alterar_Cliente.class, Excluir_Cliente.class})
+@SuiteClasses({ Buscar_Item.class })
 public class AllTests {
 
 }

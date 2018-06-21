@@ -15,11 +15,10 @@ public class Excluir_Categoria {
 	
 	@Test
 	public void deveExcluirCategoria() throws ClassNotFoundException, SQLException, DAOException {
-		CategoriaDAO dao = new CategoriaDAO();
-		Categoria c = dao.pesquisar(1);
+		Categoria c = new CategoriaDAO().pesquisar(1);
 		assertNotNull(c);
-		dao.excluir(c.getCodigo());
-		Categoria excluida = dao.pesquisar(1);
+		new CategoriaDAO().excluir(c.getCodigo());
+		Categoria excluida = new CategoriaDAO().pesquisar(1);
 		assertNull(excluida);
 
 	}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Banco de Dados" default="compilar">
+	<property file="build.properties" />
+
+	<target name="limpar">
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/${classes.dir}" />
+		<mkdir dir="${build.dir}/${classes-teste.dir}" />
+		<mkdir dir="relatorio-teste" />
+	</target>
+
+	<target name="copiar-recursos" depends="limpar">
+		<copy todir="${build.dir}/${classes.dir}">
+			<fileset dir="src">
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<path id="classpath-compilacao">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath-compilacao-teste">
+
+		<path refid="classpath-compilacao" />
+		<pathelement location="${build.dir}/${classes.dir}" />
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+
+
+	</path>
+
+	<path id="classpath-execucao-teste">
+		<path refid="classpath-compilacao-teste" />
+		<pathelement location="${build.dir}/${classes-teste.dir}" />
+	</path>
+
+	<target name="compilar" depends="copiar-recursos">
+		<javac destdir="${build.dir}/${classes.dir}" srcdir="src">
+			<classpath refid="classpath-compilacao" />
+		</javac>
+	</target>
+
+	<target name="compilar-teste" depends="compilar">
+		<javac destdir="${build.dir}/${classes-teste.dir}" srcdir="src-teste">
+			<classpath refid="classpath-compilacao-teste" />
+		</javac>
+	</target>
+
+	<target name="rodar-testes" depends="compilar-teste">
+		<junit haltonfailure="yes" showoutput="true" printsummary="on">
+			<batchtest todir="relatorio-teste">
+				<formatter type="xml" />
+				<fileset dir="src-teste">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+			<classpath refid="classpath-execucao-teste" />
+
+		</junit>
+	</target>
+
+	<target name="empacotar" depends="compilar">
+		<zip destfile="${build.dir}/backup.zip" basedir="projeto-tarefas" />
+	</target>
+
+
+
+
+</project>

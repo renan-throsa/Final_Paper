@@ -1,14 +1,13 @@
 package testes_Produto;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 
 import org.junit.Test;
-
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import aspects.Exceptions.DAOException;
 import persistence.ProdutoDAO;
@@ -17,30 +16,30 @@ import transference.Produto;
 public class Alterar_Produto {
 
 	@Test
-	public void deveAlterarCategoria()
+	public void deveAlterarProduto()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
 
-		ProdutoDAO dao = new ProdutoDAO();
-		Produto c = dao.pesquisar(1);
-		c.setDescricao("ProdutoAlterado");
-		dao.alterar(c);
-		Produto alterada = dao.pesquisar(1);
+		Produto p = new ProdutoDAO().pesquisar(1);
+		p.setDescricao("ProdutoAlterado");
+		new ProdutoDAO().alterar(p);
+		Produto alterada = new ProdutoDAO().pesquisar(1);
 		assertEquals("ProdutoAlterado", alterada.getDescricao());
 	}
 
 	@Test
 	public void deveReotrnarErroPorCausaDaCategoria()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
-		ProdutoDAO dao = new ProdutoDAO();
-		Produto p = dao.pesquisar(1);
+
+		Produto p = new ProdutoDAO().pesquisar(2);
+		assertNotNull(p);
 		p.setDescricao("ProdutoAlterado");
 		p.setIdCategoria(-1);
 
 		try {
-			dao.alterar(p);
+			new ProdutoDAO().alterar(p);
 			fail();
-		} catch (MySQLIntegrityConstraintViolationException expected) {
-			assertEquals(MySQLIntegrityConstraintViolationException.class, expected.getClass());
+		} catch (DAOException expected) {
+			assertEquals(DAOException.class, expected.getClass());
 		}
 	}
 

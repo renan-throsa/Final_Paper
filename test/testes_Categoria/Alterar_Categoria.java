@@ -17,11 +17,10 @@ public class Alterar_Categoria {
 	public void deveAlterarCategoria()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
 		
-		CategoriaDAO dao = new CategoriaDAO();
-		Categoria c = dao.pesquisar(1);
+		Categoria c = new CategoriaDAO().pesquisar(1);
 		c.setDescricao("CategoriaAlterada");
-		dao.alterar(c);
-		Categoria alterada = dao.pesquisar(1);
+		new CategoriaDAO().alterar(c);
+		Categoria alterada = new CategoriaDAO().pesquisar(1);
 		assertEquals("CategoriaAlterada",alterada.getDescricao());
 	}
 

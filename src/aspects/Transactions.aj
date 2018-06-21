@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import aspects.Exceptions.DAOException;
 import aspects.Implementations.Connectable;
@@ -12,7 +12,7 @@ import transference.Categoria;
 import transference.Produto;
 
 public aspect Transactions {
-/*
+
 	pointcut pointcutA():execution(public void Connectable+.*(..) throws SQLException);
 
 	pointcut pointcutB():execution(public Vector Connectable+.*(..) throws SQLException);
@@ -28,7 +28,7 @@ public aspect Transactions {
 				||pointcutD())
 				&& target(dao);
 
-	Object around(Connectable dao) throws DAOException: transactionOperation(dao) {
+	Object around(Connectable dao) throws DAOException, MySQLIntegrityConstraintViolationException: transactionOperation(dao) {
 		String method = thisJoinPoint.getSignature().getName();
 		try
 
@@ -53,8 +53,9 @@ public aspect Transactions {
 				if (dao.getConnection() != null)
 					dao.getConnection().fechar();
 				if (shouldShow(method)) {
-					JOptionPane.showMessageDialog(null, "Conexão fechada com sucesso!", "Mensagem",
-							JOptionPane.INFORMATION_MESSAGE);
+					// JOptionPane.showMessageDialog(null, "Conexão fechada com sucesso!",
+					// "Mensagem",JOptionPane.INFORMATION_MESSAGE);
+					System.out.println("Mensagem - Conexão fechada com sucesso!");
 				}
 			} catch (SQLException e2) {
 				return new DAOException("Erro ao fechar a conexão.", e2);
@@ -91,9 +92,11 @@ public aspect Transactions {
 	}
 
 	private void showMessage(String method) {
-		JOptionPane.showMessageDialog(null, "Operação " + method + " realizada com sucesso!", "Mensagem",
-				JOptionPane.INFORMATION_MESSAGE);
+		// JOptionPane.showMessageDialog(null, "Operação " + method + " realizada com
+		// sucesso!", "Mensagem",JOptionPane.INFORMATION_MESSAGE);
+
+		System.out.println("Operação " + method + " realizada com sucesso!");
 
 	}
-*/
+
 }

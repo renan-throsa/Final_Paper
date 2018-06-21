@@ -15,11 +15,11 @@ public class Excluir_Produto {
 	
 	@Test
 	public void deveExcluirCategoria() throws ClassNotFoundException, SQLException, DAOException {
-		ProdutoDAO dao = new ProdutoDAO();
-		Produto p = dao.pesquisar(1);
+		
+		Produto p = new ProdutoDAO().pesquisar(1);
 		assertNotNull(p);
-		dao.excluir(p.getCodigo());
-		Produto excluida = dao.pesquisar(1);
+		new ProdutoDAO().excluir(p.getCodigo());
+		Produto excluida = new ProdutoDAO().pesquisar(1);
 		assertNull(excluida);
 
 	}

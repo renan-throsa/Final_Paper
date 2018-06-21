@@ -9,22 +9,18 @@ import java.sql.SQLFeatureNotSupportedException;
 import org.junit.Test;
 
 import aspects.Exceptions.DAOException;
-import persistence.CategoriaDAO;
-import transference.Categoria;
+import persistence.ClienteDAO;
+import transference.Cliente;
 
 public class Busca_Cliente {
 
 	@Test
-	public void deveRetornarNaoNulo() throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
-		CategoriaDAO dao = new CategoriaDAO();
-		Categoria c = dao.pesquisar(1);
+	public void deveRetornarNaoNulo()
+			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
+		ClienteDAO dao = new ClienteDAO();
+		Cliente c = dao.pesquisar(1);
 		assertNotNull(c);
 	}
 
-	@Test
-	public void deveRetornarNulo() throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
-		CategoriaDAO dao = new CategoriaDAO();
-		Categoria c = dao.pesquisar(-1);
-		assertNull(c);
-	}
+
 }

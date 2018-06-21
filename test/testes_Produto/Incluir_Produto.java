@@ -19,25 +19,34 @@ public class Incluir_Produto {
 	@Test
 	public void deveIncluirProdutoComSucesso()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
-		Produto p = new Produto(1, "Produto um", 1.99, 1);
+		Produto p = new Produto(1, "ProdutoUm", 1.99, 2);
 
-		ProdutoDAO dao = new ProdutoDAO();
-		dao.incluir(p);
-		Produto inserida = dao.pesquisar(1);
-		assertEquals("Produto um", inserida.getDescricao());
+		new ProdutoDAO().incluir(p);
+		Produto inserida = new ProdutoDAO().pesquisar(1);
+		assertEquals("ProdutoUm", inserida.getDescricao());
+	}
+
+	@Test
+	public void deveIncluirProdutoComPersistente()
+			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
+		Produto p = new Produto(2, "ProdutoDois", 2.99, 2);
+
+		new ProdutoDAO().incluir(p);
+		Produto inserida = new ProdutoDAO().pesquisar(2);
+		assertEquals("ProdutoDois", inserida.getDescricao());
 	}
 
 	@Test
 	public void deveReotrnarErroPorCausaDaCategoria()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
-		Produto p = new Produto(2, "Produto dois", 1.99, -1);
-
+		Produto p = new Produto(2, "ProdutoTres", 1.99, -1);
 		ProdutoDAO dao = new ProdutoDAO();
+
 		try {
 			dao.incluir(p);
 			fail();
-		} catch (MySQLIntegrityConstraintViolationException expected) {
-			assertEquals(MySQLIntegrityConstraintViolationException.class, expected.getClass());
+		} catch (DAOException expected) {
+			assertEquals(DAOException.class, expected.getClass());
 		}
 	}
 

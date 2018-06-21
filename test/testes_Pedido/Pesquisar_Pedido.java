@@ -14,23 +14,21 @@ import persistence.PedidoDAO;
 import transference.Pedido;
 
 public class Pesquisar_Pedido {
-	
+
 	@Test
 	public void deveEncontrarPedidoComSucesso()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, Exception {
-		PedidoDAO dao = new PedidoDAO();
-		Pedido incluido = dao.pesquisar(1);
+		Pedido incluido = new PedidoDAO().pesquisar(1);
 		assertNotNull(incluido);
-		assertEquals(1, incluido.getIdCliente());
+		assertEquals(2, incluido.getIdCliente());
 	}
-	
+
 	@Test
 	public void naoDeveEncontrarPedido()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, Exception {
-		PedidoDAO dao = new PedidoDAO();
-		Pedido incluido = dao.pesquisar(-1);
+
+		Pedido incluido = new PedidoDAO().pesquisar(2);
 		assertNull(incluido);
-		
+
 	}
 }
-

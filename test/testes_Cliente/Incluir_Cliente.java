@@ -21,13 +21,26 @@ public class Incluir_Cliente {
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, ParseException {
 
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		Date dataFormatada = formato.parse("19/05/2018");
+		Date dataFormatada = formato.parse("16/10/1922");
 
 		Cliente c = new Cliente(1, "Saramago", "887.452.090-57", dataFormatada);
-		ClienteDAO dao = new ClienteDAO();
-		dao.incluir(c);
-		Cliente inserido = dao.pesquisar(1);
+		new ClienteDAO().incluir(c);
+		Cliente inserido = new ClienteDAO().pesquisar(1);
 		assertEquals("Saramago", inserido.getNome());
+
+	}
+
+	@Test
+	public void deveIncluirClientePesistente()
+			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, ParseException {
+
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataFormatada = formato.parse("09/10/1934");
+
+		Cliente c = new Cliente(2, "Sagan", "887.452.090-57", dataFormatada);
+		new ClienteDAO().incluir(c);
+		Cliente inserido = new ClienteDAO().pesquisar(2);
+		assertEquals("Sagan", inserido.getNome());
 
 	}
 

@@ -21,29 +21,22 @@ public class Incluir_Pedido {
 	@Test
 	public void deveIncluirPedidoComSucesso()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, Exception {
-		Pedido p = new Pedido();
-		p.setIdCliente(1);
-		p.setStatus('A');
-		p.incluirItem(new Item(1, 1, 1, 1.99));
-		PedidoDAO dao = new PedidoDAO();
-		dao.incluir(p);
-
-		Pedido incluido = dao.pesquisar(1);
+		Pedido p = new Pedido(1, null, null, 2, 'A');
+		p.incluirItem(new Item(1, 2, 1, 1.99));
+		new PedidoDAO().incluir(p);
+		Pedido incluido = new PedidoDAO().pesquisar(1);
 		assertNotNull(incluido);
-		assertEquals(1, incluido.getIdCliente());
+		assertEquals(2, incluido.getIdCliente());
 	}
 
 	@Test
 	public void naoDeveIncluirPedidoComSucessoPorCausaDoCliente()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, Exception {
-		Pedido p = new Pedido();
-		p.setIdCliente(-1);
-		p.setStatus('A');
+		Pedido p = new Pedido(1, null, null, 1, 'A');
 		p.incluirItem(new Item(1, 1, 1, 1.99));
-		PedidoDAO dao = new PedidoDAO();
 
 		try {
-			dao.incluir(p);
+			new PedidoDAO().incluir(p);
 			fail();
 		} catch (MySQLIntegrityConstraintViolationException expected) {
 			assertEquals(MySQLIntegrityConstraintViolationException.class, expected.getClass());

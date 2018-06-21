@@ -14,15 +14,14 @@ import transference.Cliente;
 public class Alterar_Cliente {
 
 	@Test
-	public void deveAlterarCategoria()
+	public void deveAlterarCliente()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
 		
-		ClienteDAO dao = new ClienteDAO();
-		Cliente c = dao.pesquisar(1);
-		c.setNome("Nome alterado");
-		dao.alterar(c);
-		Cliente alterada = dao.pesquisar(1);
-		assertEquals("Nome alterado",alterada.getNome());
+		Cliente c = new ClienteDAO().pesquisar(1);
+		c.setNome("Philip K. Dick");
+		new ClienteDAO().alterar(c);
+		Cliente alterada = new ClienteDAO().pesquisar(1);
+		assertEquals("Philip K. Dick",alterada.getNome());
 	}
 
 }

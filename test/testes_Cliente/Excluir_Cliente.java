@@ -13,13 +13,14 @@ import transference.Cliente;
 public class Excluir_Cliente {
 
 	@Test
-	public void deveExcluirCliente() throws ClassNotFoundException, SQLException, DAOException {
+	public void deveExcluirClienteComSucesso() throws ClassNotFoundException, SQLException, DAOException {
 
-		ClienteDAO dao = new ClienteDAO();
-		dao.excluir(1);
-		Cliente buscado = dao.pesquisar(1);
+		new ClienteDAO().excluir(1);
+		Cliente buscado = new ClienteDAO().pesquisar(1);
 		assertNull(buscado);
 
 	}
+	
+	
 
 }

@@ -18,11 +18,19 @@ public class Incluir_Categoria {
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
 		Categoria c = new Categoria();
 		c.setDescricao("CategoriaUm");
-		CategoriaDAO dao = new CategoriaDAO();
-		dao.incluir(c);
-		Categoria inserida = dao.pesquisar(1);
+		new CategoriaDAO().incluir(c);
+		Categoria inserida = new CategoriaDAO().pesquisar(1);
 		assertEquals("CategoriaUm", inserida.getDescricao());
 	}
 
-	
+	@Test
+	public void deveIncluirCategoriaPersistente()
+			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException {
+		Categoria c = new Categoria();
+		c.setDescricao("CategoriaDois");
+		new CategoriaDAO().incluir(c);
+		Categoria inserida = new CategoriaDAO().pesquisar(2);
+		assertEquals("CategoriaDois", inserida.getDescricao());
+	}
+
 }

@@ -16,19 +16,19 @@ import transference.Item;
 public class Buscar_Item {
 
 	@Test
-	public void deveEncontrarPedidoComSucesso()
+	public void deveEncontrarItemComSucesso()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, Exception {
-		ItemDAO dao = new ItemDAO();
-		Item incluido = dao.pesquisar(1);
+
+		Item incluido = new ItemDAO().pesquisar(1);
 		assertNotNull(incluido);
 		assertEquals(1, incluido.getIdPedido());
 	}
 
 	@Test
-	public void naoDeveEncontrarPedido()
+	public void naoDeveEncontrarItem()
 			throws SQLFeatureNotSupportedException, ClassNotFoundException, SQLException, DAOException, Exception {
-		ItemDAO dao = new ItemDAO();
-		Item incluido = dao.pesquisar(1);
+
+		Item incluido = new ItemDAO().pesquisar(-11);
 		assertNull(incluido);
 
 	}

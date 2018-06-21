@@ -26,7 +26,7 @@ public class ItemDAO {
 	}
 
 	public Item pesquisar(int codigo) throws SQLException, DAOException {
-		PreparedStatement pst = cc.getConexao().prepareStatement("SELECT * FROM ITEM WHERE CODIGO = ?");
+		PreparedStatement pst = cc.getConexao().prepareStatement("SELECT * FROM ITEM WHERE ID_PEDIDO = ?");
 		pst.setInt(1, codigo);
 		ResultSet rs = pst.executeQuery();
 		if (!rs.next())
@@ -34,6 +34,7 @@ public class ItemDAO {
 
 		return new Item(rs.getInt("ID_PEDIDO"), rs.getInt("ID_PRODUTO"), rs.getInt("QUANTIDADE"),
 				rs.getDouble("UNITARIO"));
+
 	}
 
 }
