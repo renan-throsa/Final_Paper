@@ -1,0 +1,189 @@
+Fri Jun 22 11:53:55 BRT 2018
+Type 'aspects.Implementations$Connectable' (Implementations.aj) has intertyped field from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.cc')
+	
+Type 'aspects.Implementations$Connectable' (Implementations.aj) has intertyped method from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.getConnection()')
+	
+Join point 'method-execution(void presentation.IFCategoria.atualizarGrade())' in Type 'presentation.IFCategoria' (IFCategoria.java:19) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCategoria.atualizarGrade())' in Type 'presentation.IFCategoria' (IFCategoria.java:19) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCategoria.incluir())' in Type 'presentation.IFCategoria' (IFCategoria.java:27) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCategoria.incluir())' in Type 'presentation.IFCategoria' (IFCategoria.java:27) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCategoria.incluir())' in Type 'presentation.IFCategoria' (IFCategoria.java:27) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:81)
+	
+Join point 'method-execution(void presentation.IFCategoria.alterar())' in Type 'presentation.IFCategoria' (IFCategoria.java:36) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCategoria.alterar())' in Type 'presentation.IFCategoria' (IFCategoria.java:36) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCategoria.alterar())' in Type 'presentation.IFCategoria' (IFCategoria.java:36) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:81)
+	
+Join point 'method-execution(void presentation.IFCategoria.excluir())' in Type 'presentation.IFCategoria' (IFCategoria.java:46) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCategoria.excluir())' in Type 'presentation.IFCategoria' (IFCategoria.java:46) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCategoria.carregarRegistro(java.lang.String))' in Type 'presentation.IFCategoria' (IFCategoria.java:56) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCategoria.carregarRegistro(java.lang.String))' in Type 'presentation.IFCategoria' (IFCategoria.java:56) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCliente.atualizarGrade())' in Type 'presentation.IFCliente' (IFCliente.java:41) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCliente.atualizarGrade())' in Type 'presentation.IFCliente' (IFCliente.java:41) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCliente.incluir())' in Type 'presentation.IFCliente' (IFCliente.java:50) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCliente.incluir())' in Type 'presentation.IFCliente' (IFCliente.java:50) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCliente.incluir())' in Type 'presentation.IFCliente' (IFCliente.java:50) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:71)
+	
+Join point 'method-execution(void presentation.IFCliente.incluir())' in Type 'presentation.IFCliente' (IFCliente.java:50) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:97)
+	
+Join point 'method-execution(void presentation.IFCliente.alterar())' in Type 'presentation.IFCliente' (IFCliente.java:62) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCliente.alterar())' in Type 'presentation.IFCliente' (IFCliente.java:62) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCliente.alterar())' in Type 'presentation.IFCliente' (IFCliente.java:62) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:71)
+	
+Join point 'method-execution(void presentation.IFCliente.alterar())' in Type 'presentation.IFCliente' (IFCliente.java:62) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:89)
+	
+Join point 'method-execution(void presentation.IFCliente.carregarRegistro(java.lang.String))' in Type 'presentation.IFCliente' (IFCliente.java:74) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCliente.carregarRegistro(java.lang.String))' in Type 'presentation.IFCliente' (IFCliente.java:74) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCliente.carregarRegistro(java.lang.String))' in Type 'presentation.IFCliente' (IFCliente.java:74) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:89)
+	
+Join point 'method-execution(void presentation.IFCliente.excluir())' in Type 'presentation.IFCliente' (IFCliente.java:83) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFCliente.excluir())' in Type 'presentation.IFCliente' (IFCliente.java:83) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCliente.excluir())' in Type 'presentation.IFCliente' (IFCliente.java:83) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:89)
+	
+Softening exceptions in type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:141) as defined by aspect 'aspects.Exceptions' (Exceptions.aj:138)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.actionPerformed(java.awt.event.ActionEvent))' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:147) advised by around advice from 'aspects.Exceptions' (Exceptions.aj:126)
+	
+Softening exceptions in type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:147) as defined by aspect 'aspects.Exceptions' (Exceptions.aj:124)
+	
+Softening exceptions in type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:165) as defined by aspect 'aspects.Exceptions' (Exceptions.aj:149)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.exibirPreco())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:180) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.exibirPreco())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:180) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.exibirPreco())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:180) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:113)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.addItem())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:188) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:105)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.addItem())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:188) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:113)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.gravarPedido())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:232) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFPedidoRegistrar.gravarPedido())' in Type 'presentation.IFPedidoRegistrar' (IFPedidoRegistrar.java:232) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFCadastro.actionPerformed(java.awt.event.ActionEvent))' in Type 'presentation.IFCadastro' (IFCadastro.java:127) advised by around advice from 'aspects.Exceptions' (Exceptions.aj:126)
+	
+Softening exceptions in type 'presentation.IFCadastro' (IFCadastro.java:127) as defined by aspect 'aspects.Exceptions' (Exceptions.aj:124)
+	
+Join point 'method-execution(void presentation.IFProduto.atualizarGrade())' in Type 'presentation.IFProduto' (IFProduto.java:38) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFProduto.atualizarGrade())' in Type 'presentation.IFProduto' (IFProduto.java:38) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFProduto.incluir())' in Type 'presentation.IFProduto' (IFProduto.java:44) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFProduto.incluir())' in Type 'presentation.IFProduto' (IFProduto.java:44) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFProduto.alterar())' in Type 'presentation.IFProduto' (IFProduto.java:57) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFProduto.alterar())' in Type 'presentation.IFProduto' (IFProduto.java:57) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFProduto.excluir())' in Type 'presentation.IFProduto' (IFProduto.java:71) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFProduto.excluir())' in Type 'presentation.IFProduto' (IFProduto.java:71) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.IFProduto.excluir())' in Type 'presentation.IFProduto' (IFProduto.java:71) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:89)
+	
+Join point 'method-execution(void presentation.IFProduto.carregarRegistro(java.lang.String))' in Type 'presentation.IFProduto' (IFProduto.java:80) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:49)
+	
+Join point 'method-execution(void presentation.IFProduto.carregarRegistro(java.lang.String))' in Type 'presentation.IFProduto' (IFProduto.java:80) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:56)
+	
+Join point 'method-execution(void presentation.JFPrincipal.actionPerformed(java.awt.event.ActionEvent))' in Type 'presentation.JFPrincipal' (JFPrincipal.java:85) advised by around advice from 'aspects.Exceptions' (Exceptions.aj:126)
+	
+Softening exceptions in type 'presentation.JFPrincipal' (JFPrincipal.java:85) as defined by aspect 'aspects.Exceptions' (Exceptions.aj:124)
+	
+Join point 'method-execution(void presentation.JFPrincipal.cadastrarCategoria())' in Type 'presentation.JFPrincipal' (JFPrincipal.java:99) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:42)
+	
+Join point 'method-execution(void presentation.JFPrincipal.cadastrarProduto())' in Type 'presentation.JFPrincipal' (JFPrincipal.java:106) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:42)
+	
+Join point 'method-execution(void presentation.JFPrincipal.cadastrarCliente())' in Type 'presentation.JFPrincipal' (JFPrincipal.java:113) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:42)
+	
+Join point 'method-execution(void presentation.JFPrincipal.cadastrarCliente())' in Type 'presentation.JFPrincipal' (JFPrincipal.java:113) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:63)
+	
+Join point 'method-execution(void presentation.JFPrincipal.registrarPedido())' in Type 'presentation.JFPrincipal' (JFPrincipal.java:121) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:42)
+	
+Join point 'method-execution(void presentation.JFPrincipal.registrarPedido())' in Type 'presentation.JFPrincipal' (JFPrincipal.java:121) advised by afterThrowing advice from 'aspects.Exceptions' (Exceptions.aj:63)
+	
+Extending interface set for type 'persistence.CategoriaDAO' (CategoriaDAO.java) to include 'aspects.Implementations$Connectable' (Implementations.aj)
+	
+Type 'persistence.CategoriaDAO' (CategoriaDAO.java) has intertyped field from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.cc')
+	
+Type 'persistence.CategoriaDAO' (CategoriaDAO.java) has intertyped method from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.getConnection()')
+	
+Join point 'method-execution(void persistence.CategoriaDAO.incluir(transference.Categoria))' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:21) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(void persistence.CategoriaDAO.alterar(transference.Categoria))' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:36) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(void persistence.CategoriaDAO.excluir(int))' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:46) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(java.sql.ResultSet persistence.CategoriaDAO.carregarGrade())' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:54) advised by around advice from 'aspects.Transactions' (Transactions.aj:111)
+	
+Join point 'method-execution(java.util.Vector persistence.CategoriaDAO.carregarCombo())' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:59) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Join point 'method-execution(transference.Categoria persistence.CategoriaDAO.pesquisar(int))' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:68) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Join point 'method-execution(transference.Categoria persistence.CategoriaDAO.pesquisar(java.lang.String))' in Type 'persistence.CategoriaDAO' (CategoriaDAO.java:77) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Extending interface set for type 'persistence.ProdutoDAO' (ProdutoDAO.java) to include 'aspects.Implementations$Connectable' (Implementations.aj)
+	
+Type 'persistence.ProdutoDAO' (ProdutoDAO.java) has intertyped field from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.cc')
+	
+Type 'persistence.ProdutoDAO' (ProdutoDAO.java) has intertyped method from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.getConnection()')
+	
+Join point 'method-execution(void persistence.ProdutoDAO.incluir(transference.Produto))' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:20) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(void persistence.ProdutoDAO.alterar(transference.Produto))' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:38) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(void persistence.ProdutoDAO.excluir(int))' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:50) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(java.sql.ResultSet persistence.ProdutoDAO.carregarGrade())' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:58) advised by around advice from 'aspects.Transactions' (Transactions.aj:111)
+	
+Join point 'method-execution(java.util.Vector persistence.ProdutoDAO.carregarCombo())' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:63) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Join point 'method-execution(transference.Produto persistence.ProdutoDAO.pesquisar(int))' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:72) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Join point 'method-execution(transference.Produto persistence.ProdutoDAO.pesquisar(java.lang.String))' in Type 'persistence.ProdutoDAO' (ProdutoDAO.java:82) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Extending interface set for type 'persistence.ClienteDAO' (ClienteDAO.java) to include 'aspects.Implementations$Connectable' (Implementations.aj)
+	
+Type 'persistence.ClienteDAO' (ClienteDAO.java) has intertyped field from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.cc')
+	
+Type 'persistence.ClienteDAO' (ClienteDAO.java) has intertyped method from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.getConnection()')
+	
+Join point 'method-execution(void persistence.ClienteDAO.incluir(transference.Cliente))' in Type 'persistence.ClienteDAO' (ClienteDAO.java:21) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(void persistence.ClienteDAO.alterar(transference.Cliente))' in Type 'persistence.ClienteDAO' (ClienteDAO.java:37) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(void persistence.ClienteDAO.excluir(int))' in Type 'persistence.ClienteDAO' (ClienteDAO.java:49) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	
+Join point 'method-execution(java.sql.ResultSet persistence.ClienteDAO.carregarGrade())' in Type 'persistence.ClienteDAO' (ClienteDAO.java:57) advised by around advice from 'aspects.Transactions' (Transactions.aj:111)
+	
+Join point 'method-execution(java.util.Vector persistence.ClienteDAO.carregarCombo())' in Type 'persistence.ClienteDAO' (ClienteDAO.java:62) advised by around advice from 'aspects.Transactions' (Transactions.aj:72)
+	
+Extending interface set for type 'persistence.ItemDAO' (ItemDAO.java) to include 'aspects.Implementations$Connectable' (Implementations.aj)
+	
+Type 'persistence.ItemDAO' (ItemDAO.java) has intertyped field from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.cc')
+	
+Type 'persistence.ItemDAO' (ItemDAO.java) has intertyped method from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.getConnection()')
+	
+Join point 'method-execution(void persistence.ItemDAO.incluir(transference.Item))' in Type 'persistence.ItemDAO' (ItemDAO.java:18) advised by around advice from 'aspects.Transactions' (Transactions.aj:29)
+	

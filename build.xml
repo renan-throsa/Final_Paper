@@ -1,75 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="Banco de Dados" default="compilar">
+<project name="exampleTelecomAOAspectEnhanced" default="compile">
 	<property file="build.properties" />
 
-	<target name="limpar">
-		<delete dir="${build.dir}" />
-		<mkdir dir="${build.dir}" />
-		<mkdir dir="${build.dir}/${classes.dir}" />
-		<mkdir dir="${build.dir}/${classes-teste.dir}" />
-		<mkdir dir="relatorio-teste" />
+	<taskdef 
+		resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties">
+		<classpath>
+			<pathelement location="${aspectj.api.dir}/aspectj/aspectjtools.jar"/>
+		</classpath>
+	</taskdef>
+
+	<target name="compile">
+		<antcall target="clean">
+		</antcall>
+		<echo message="Creating ${build.dir} directory" />
+		<mkdir dir="${build.dir}"/>
+
+		<echo message="Compiling the application..." />
+		<iajc destdir="${build.dir}" source="1.5" fork="true" maxmem="256M" showWeaveInfo="true" log="weaving.txt">
+			<sourceroots>
+				<pathelement location="${src.dir}"/>
+			</sourceroots>
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+				<pathelement location="${aspectj.api.dir}/aspectj/aspectjrt.jar"/>
+			</classpath>
+		</iajc>
+		<echo message="Application compiled." />
+
+		<echo message="   Compiling the test cases..." />
+		<iajc destdir="${tests.dir}" source="1.5" fork="true" maxmem="256M">
+			<sourceroots>
+				<pathelement location="${tests.dir}"/>
+			</sourceroots>
+			<classpath>
+				<fileset dir="${lib-test.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+				<pathelement location="${build.dir}" />
+				<pathelement location="${aspectj.api.dir}/aspectj/aspectjrt.jar"/>
+			</classpath>
+		</iajc>
+		<echo message="   Test cases compiled." />
 	</target>
 
-	<target name="copiar-recursos" depends="limpar">
-		<copy todir="${build.dir}/${classes.dir}">
-			<fileset dir="src">
-				<include name="*.xml" />
-			</fileset>
-		</copy>
-	</target>
 
-	<path id="classpath-compilacao">
-		<fileset dir="lib">
-			<include name="*.jar" />
-		</fileset>
-	</path>
+	<target name="full-test">
+		<echo message="Running full test set of the application..." />
+		<mkdir dir="${test.reports.dir}"/>
 
-	<path id="classpath-compilacao-teste">
+		<junit printsummary="yes" haltonfailure="no" timeout="5000">
 
-		<path refid="classpath-compilacao" />
-		<pathelement location="${build.dir}/${classes.dir}" />
-		<fileset dir="lib">
-			<include name="*.jar" />
-		</fileset>
+			<classpath>
+				<fileset dir="${lib-test.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+				<pathelement location="${build.dir}"/>
+				<pathelement location="${tests.dir}"/>
+				<pathelement path="${lib-test.dir}/junit.jar"/>
+				<pathelement path="${lib.dir}/mysql-connector-java-5.1.44.jar"/>
+				<pathelement path="${aspectj.api.dir}/aspectj/aspectjrt.jar"/>
+			</classpath>
 
+			<formatter type="xml"/>
 
-	</path>
-
-	<path id="classpath-execucao-teste">
-		<path refid="classpath-compilacao-teste" />
-		<pathelement location="${build.dir}/${classes-teste.dir}" />
-	</path>
-
-	<target name="compilar" depends="copiar-recursos">
-		<javac destdir="${build.dir}/${classes.dir}" srcdir="src">
-			<classpath refid="classpath-compilacao" />
-		</javac>
-	</target>
-
-	<target name="compilar-teste" depends="compilar">
-		<javac destdir="${build.dir}/${classes-teste.dir}" srcdir="src-teste">
-			<classpath refid="classpath-compilacao-teste" />
-		</javac>
-	</target>
-
-	<target name="rodar-testes" depends="compilar-teste">
-		<junit haltonfailure="yes" showoutput="true" printsummary="on">
-			<batchtest todir="relatorio-teste">
-				<formatter type="xml" />
-				<fileset dir="src-teste">
-					<include name="**/*Test.java" />
+			<batchtest fork="yes" todir="${test.reports.dir}">
+				<fileset dir="${tests.dir}">
+					<include name="**/AllTests.java" />
 				</fileset>
 			</batchtest>
-			<classpath refid="classpath-execucao-teste" />
-
 		</junit>
 	</target>
 
-	<target name="empacotar" depends="compilar">
-		<zip destfile="${build.dir}/backup.zip" basedir="projeto-tarefas" />
+	<target name="single-test">
+		<echo message="Running individual test of the application..." />
+		<mkdir dir="${test.reports.dir}"/>
+
+		<junit printsummary="yes" haltonfailure="no" timeout="5000">
+			<classpath>
+				<pathelement location="${build.dir}"/>
+				<pathelement location="${tests.dir}"/>
+				<pathelement path="${lib.dir}/commons-lang-2.4.jar"/>
+				<pathelement path="${lib.dir}/junit.jar"/>
+				<pathelement path="${lib.dir}/mysql-connector-java-5.1.44.jar"/>
+				<pathelement path="${aspectj.api.dir}/aspectj/aspectjrt.jar"/>
+			</classpath>
+
+			<formatter type="xml"/>
+			<test fork="yes" name="${test.name}" haltonfailure="no" todir="${test.reports.dir}" />
+		</junit>
 	</target>
 
 
-
-
+	<target name="clean" description="Remove all files created by the build/test process." >
+		<echo message="Cleaning built application..." />
+		<delete dir="${build.dir}" />
+		<delete dir="${test.reports.dir}" />
+		<delete file="weaving.txt" />
+	</target>
 </project>
+
+
+
