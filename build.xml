@@ -1,4 +1,4 @@
-<project name="exampleTelecomAOAspectEnhanced" default="compile">
+<project name="trabalhoFinal" default="compile">
 	<property file="build.properties" />
 
 	<taskdef 
@@ -51,7 +51,7 @@
 	</target>
 
 
-	<target name="full-test">
+	<target name="full-test" depends="compile">
 		<echo message="Running full test set of the application..." />
 		<mkdir dir="${test.reports.dir}"/>
 
@@ -64,7 +64,8 @@
 				</fileset>
 				<pathelement location="${build.dir}"/>
 				<pathelement location="${tests.dir}"/>
-				<pathelement path="${lib-test.dir}/junit.jar"/>
+				<pathelement path="${lib-test.dir}/junit-4.12.jar"/>
+				<pathelement path="${lib-test.dir}/hamcrest-all-1.3.jar"/>
 				<pathelement path="${lib.dir}/mysql-connector-java-5.1.44.jar"/>
 				<pathelement path="${aspectj.api.dir}/aspectj/aspectjrt.jar"/>
 			</classpath>
@@ -73,13 +74,14 @@
 
 			<batchtest fork="yes" todir="${test.reports.dir}">
 				<fileset dir="${tests.dir}">
-					<include name="**/AllTests.java" />
+					<exclude name="**/*Test.java"/>
+					<include name="**/AllTests.java"/>
 				</fileset>
 			</batchtest>
 		</junit>
 	</target>
 
-	<target name="single-test">
+	<target name="single-test" depends="compile">
 		<echo message="Running individual test of the application..." />
 		<mkdir dir="${test.reports.dir}"/>
 
@@ -87,14 +89,22 @@
 			<classpath>
 				<pathelement location="${build.dir}"/>
 				<pathelement location="${tests.dir}"/>
-				<pathelement path="${lib.dir}/commons-lang-2.4.jar"/>
-				<pathelement path="${lib.dir}/junit.jar"/>
+				<pathelement path="${lib.dir}/commons-lang-2.6.jar"/>
+				<pathelement path="${lib-test.dir}/junit-4.12.jar"/>
+				<pathelement path="${lib-test.dir}/hamcrest-all-1.3.jar"/>
 				<pathelement path="${lib.dir}/mysql-connector-java-5.1.44.jar"/>
 				<pathelement path="${aspectj.api.dir}/aspectj/aspectjrt.jar"/>
 			</classpath>
 
 			<formatter type="xml"/>
-			<test fork="yes" name="${test.name}" haltonfailure="no" todir="${test.reports.dir}" />
+
+			<batchtest fork="yes" todir="${test.reports.dir}">
+				<fileset dir="${tests.dir}">
+					<exclude name="**/AllTests.java"/>
+					<include name="**/*Test.java"/>
+				</fileset>
+			</batchtest>
+
 		</junit>
 	</target>
 

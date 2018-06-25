@@ -1,4 +1,4 @@
-Fri Jun 22 11:53:55 BRT 2018
+Sun Jun 24 19:26:07 BRT 2018
 Type 'aspects.Implementations$Connectable' (Implementations.aj) has intertyped field from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.cc')
 	
 Type 'aspects.Implementations$Connectable' (Implementations.aj) has intertyped method from 'aspects.Implementations' (Implementations.aj:'connection.ConexaoComercio aspects.Implementations$Connectable.getConnection()')

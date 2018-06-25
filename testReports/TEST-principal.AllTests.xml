@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="lapesic-VirtualBox" name="principal.AllTests" tests="25" time="0.801" timestamp="2018-06-24T22:26:12">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="lib.dir" value="lib" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/home/lapesic/Downloads/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/templates//" />
+    <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+    <property name="ant.file.type.trabalhoFinal" value="file" />
+    <property name="os.name" value="Linux" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-7-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-7-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-7-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-7-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-7-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-7-oracle/jre/classes" />
+    <property name="test.reports.dir" value="testReports" />
+    <property name="sun.desktop" value="gnome" />
+    <property name="targets.modules" value="targets.lst" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030" />
+    <property name="java.runtime.version" value="1.7.0_65-b17" />
+    <property name="user.name" value="lapesic" />
+    <property name="build.dir" value="build" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/i386" />
+    <property name="ant.project.default-target" value="compile" />
+    <property name="ant.project.name" value="trabalhoFinal" />
+    <property name="java.version" value="1.7.0_65" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-oracle/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/usr/lib/jvm/java-7-oracle/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="/home/lapesic/workspace/aplicacoesAO/Trabalho Final/build.xml" />
+    <property name="os.version" value="3.11.0-26-generic" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="24.65-b04" />
+    <property name="ant.library.dir" value="/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030/lib" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
+    <property name="eclipse.pdebuild.scripts" value="/home/lapesic/Downloads/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/scripts//" />
+    <property name="user.home" value="/home/lapesic" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/i386/client:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner principal.AllTests filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/lapesic/workspace/aplicacoesAO/Trabalho Final/testReports/TEST-principal.AllTests.xml crashfile=/home/lapesic/workspace/aplicacoesAO/Trabalho Final/junitvmwatcher6982051329554573430.properties propsfile=/home/lapesic/workspace/aplicacoesAO/Trabalho Final/junit197661990231986491.properties" />
+    <property name="java.class.path" value="/home/lapesic/workspace/aplicacoesAO/Trabalho Final/lib-test/hamcrest-all-1.3.jar:/home/lapesic/workspace/aplicacoesAO/Trabalho Final/lib-test/junit-4.12.jar:/home/lapesic/workspace/aplicacoesAO/Trabalho Final/build:/home/lapesic/workspace/aplicacoesAO/Trabalho Final/tests:/home/lapesic/workspace/aplicacoesAO/Trabalho Final/lib/mysql-connector-java-5.1.44.jar:/opt/java/lib/aspectj/aspectjrt.jar:/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030/lib/ant-launcher.jar:/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030/lib/ant.jar:/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030/lib/ant-junit.jar:/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030/lib/ant-junit4.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.4 compiled on May 22 2012" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="eclipse.pdebuild.home" value="/home/lapesic/Downloads/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/.//" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="lib-test.dir" value="lib-test" />
+    <property name="os.arch" value="i386" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-7-oracle/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="tests.dir" value="tests" />
+    <property name="user.dir" value="/home/lapesic/workspace/aplicacoesAO/Trabalho Final" />
+    <property name="ant.file.trabalhoFinal" value="/home/lapesic/workspace/aplicacoesAO/Trabalho Final/build.xml" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+    <property name="basedir" value="/home/lapesic/workspace/aplicacoesAO/Trabalho Final" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/home/lapesic/Downloads/eclipse/plugins/org.apache.ant_1.8.4.v201303080030/lib/ant.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="src.dir" value="src" />
+    <property name="ant.project.invoked-targets" value="full-test" />
+    <property name="aspectj.api.dir" value="/opt/java/lib" />
+  </properties>
+  <testcase classname="a_testes_Categoria.A_Incluir_Categoria_Test" name="deveIncluirCategoriaComSucesso" time="0.478" />
+  <testcase classname="a_testes_Categoria.A_Incluir_Categoria_Test" name="deveIncluirCategoriaPersistente" time="0.008" />
+  <testcase classname="a_testes_Categoria.B_Busca_Categoria_Test" name="deveRetornarNulo" time="0.001" />
+  <testcase classname="a_testes_Categoria.B_Busca_Categoria_Test" name="deveRetornarNaoNulo" time="0.001" />
+  <testcase classname="a_testes_Categoria.C_Alterar_Categoria_Test" name="deveAlterarCategoria" time="0.006" />
+  <testcase classname="a_testes_Categoria.D_Excluir_Categoria_Test" name="deveExcluirCategoria" time="0.007" />
+  <testcase classname="b_testes_Produto.A_Incluir_Produto_Test" name="deveIncluirProdutoComSucesso" time="0.016" />
+  <testcase classname="b_testes_Produto.A_Incluir_Produto_Test" name="deveIncluirProdutoComPersistente" time="0.009" />
+  <testcase classname="b_testes_Produto.A_Incluir_Produto_Test" name="deveReotrnarErroPorCausaDaCategoria" time="0.024" />
+  <testcase classname="b_testes_Produto.B_Busca_Produto_Test" name="deveRetornarNaoNulo" time="0.001" />
+  <testcase classname="b_testes_Produto.C_Alterar_Produto_Test" name="deveAlterarProduto" time="0.004" />
+  <testcase classname="b_testes_Produto.C_Alterar_Produto_Test" name="deveReotrnarErroPorCausaDaCategoria" time="0.002" />
+  <testcase classname="b_testes_Produto.D_Excluir_Produto_Test" name="deveExcluirCategoria" time="0.004" />
+  <testcase classname="c_testes_Cliente.A_Incluir_Cliente_Test" name="deveIncluirClienteComSucesso" time="0.011" />
+  <testcase classname="c_testes_Cliente.A_Incluir_Cliente_Test" name="deveIncluirClientePesistente" time="0.005" />
+  <testcase classname="c_testes_Cliente.B_Busca_Cliente_Test" name="deveRetornarNaoNulo" time="0.001" />
+  <testcase classname="c_testes_Cliente.C_Alterar_Cliente_Test" name="deveAlterarCliente" time="0.005" />
+  <testcase classname="c_testes_Cliente.D_Excluir_Cliente_Test" name="deveExcluirClienteComSucesso" time="0.003" />
+  <testcase classname="d_testes_Pedido.Incluir_Pedido_Test" name="deveIncluirPedidoComSucesso" time="0.01" />
+  <testcase classname="d_testes_Pedido.Incluir_Pedido_Test" name="naoDeveIncluirPedidoComSucessoPorCausaDoItem" time="0.001" />
+  <testcase classname="d_testes_Pedido.Incluir_Pedido_Test" name="naoDeveIncluirPedidoComSucessoPorCausaDoCliente" time="0.001" />
+  <testcase classname="d_testes_Pedido.Pesquisar_Pedido_Test" name="deveEncontrarPedidoComSucesso" time="0.001" />
+  <testcase classname="d_testes_Pedido.Pesquisar_Pedido_Test" name="naoDeveEncontrarPedido" time="0.001" />
+  <testcase classname="e_testes_Item.Buscar_Item_Test" name="naoDeveEncontrarItem" time="0.001" />
+  <testcase classname="e_testes_Item.Buscar_Item_Test" name="deveEncontrarItemComSucesso" time="0.001" />
+  <system-out><![CDATA[Operação incluir realizada com sucesso!
+Operação incluir realizada com sucesso!
+Operação alterar realizada com sucesso!
+Operação excluir realizada com sucesso!
+Operação incluir realizada com sucesso!
+Operação incluir realizada com sucesso!
+Operação alterar realizada com sucesso!
+Operação excluir realizada com sucesso!
+Operação incluir realizada com sucesso!
+Operação incluir realizada com sucesso!
+Operação alterar realizada com sucesso!
+Operação excluir realizada com sucesso!
+Operação incluir realizada com sucesso!
+Resetando database comercio
+Recriando database comercio
+Criando tabela CATEGORIA
+Resetando Tabela comercio
+Criando tabela PRODUTO
+Criando tabela CLIENTE
+Criando tabela PEDIDO
+Criando tabela ITEM
+Criando chaves estrangeiras
+TABELA COMERCIO RESETADO COM SUCESSO.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

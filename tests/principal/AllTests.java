@@ -4,26 +4,26 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import testes_Categoria.Alterar_Categoria_Test;
-import testes_Categoria.Busca_Categoria_Test;
-import testes_Categoria.Excluir_Categoria_Test;
-import testes_Categoria.Incluir_Categoria_Test;
-import testes_Cliente.Alterar_Cliente_Test;
-import testes_Cliente.Busca_Cliente_Test;
-import testes_Cliente.Excluir_Cliente_Test;
-import testes_Cliente.Incluir_Cliente_Test;
-import testes_Item.Buscar_Item_Test;
-import testes_Pedido.Incluir_Pedido_Test;
-import testes_Pedido.Pesquisar_Pedido_Test;
-import testes_Produto.Alterar_Produto_Test;
-import testes_Produto.Busca_Produto_Test;
-import testes_Produto.Excluir_Produto_Test;
-import testes_Produto.Incluir_Produto_Test;
+import a_testes_Categoria.A_Incluir_Categoria_Test;
+import a_testes_Categoria.B_Busca_Categoria_Test;
+import a_testes_Categoria.C_Alterar_Categoria_Test;
+import a_testes_Categoria.D_Excluir_Categoria_Test;
+import b_testes_Produto.A_Incluir_Produto_Test;
+import b_testes_Produto.B_Busca_Produto_Test;
+import b_testes_Produto.C_Alterar_Produto_Test;
+import b_testes_Produto.D_Excluir_Produto_Test;
+import c_testes_Cliente.A_Incluir_Cliente_Test;
+import c_testes_Cliente.B_Busca_Cliente_Test;
+import c_testes_Cliente.C_Alterar_Cliente_Test;
+import c_testes_Cliente.D_Excluir_Cliente_Test;
+import d_testes_Pedido.Incluir_Pedido_Test;
+import d_testes_Pedido.Pesquisar_Pedido_Test;
+import e_testes_Item.Buscar_Item_Test;
 
 @RunWith(Suite.class)
-@SuiteClasses({ Incluir_Categoria_Test.class, Busca_Categoria_Test.class, Alterar_Categoria_Test.class, Excluir_Categoria_Test.class,
-		Incluir_Produto_Test.class, Busca_Produto_Test.class, Alterar_Produto_Test.class, Excluir_Produto_Test.class, Incluir_Cliente_Test.class,
-		Busca_Cliente_Test.class, Alterar_Cliente_Test.class, Excluir_Cliente_Test.class, Incluir_Pedido_Test.class, Pesquisar_Pedido_Test.class,
+@SuiteClasses({ A_Incluir_Categoria_Test.class, B_Busca_Categoria_Test.class, C_Alterar_Categoria_Test.class, D_Excluir_Categoria_Test.class,
+		A_Incluir_Produto_Test.class, B_Busca_Produto_Test.class, C_Alterar_Produto_Test.class, D_Excluir_Produto_Test.class, A_Incluir_Cliente_Test.class,
+		B_Busca_Cliente_Test.class, C_Alterar_Cliente_Test.class, D_Excluir_Cliente_Test.class, Incluir_Pedido_Test.class, Pesquisar_Pedido_Test.class,
 		Buscar_Item_Test.class })
 public class AllTests {
 
